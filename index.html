@@ -62,10 +62,9 @@
             <!-- Desktop Menu -->
             <div class="hidden md:flex space-x-8 font-medium text-slate-600" id="desktop-menu">
                 <a href="#about" class="hover:text-blue-600 transition-colors">About</a>
-                <a href="#skills" class="hover:text-blue-600 transition-colors">Skills</a>
+                <a href="#competencies" class="hover:text-blue-600 transition-colors">Competencies</a>
                 <a href="#experience" class="hover:text-blue-600 transition-colors">Experience</a>
                 <a href="#projects" class="hover:text-blue-600 transition-colors">Projects</a>
-                <a href="#research" class="hover:text-blue-600 transition-colors">Research</a>
                 <a href="#contact" class="hover:text-blue-600 transition-colors">Contact</a>
             </div>
 
@@ -79,17 +78,17 @@
         <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-100 absolute w-full shadow-lg top-full left-0">
             <div class="flex flex-col p-4 space-y-4">
                 <a href="#about" class="mobile-link text-left text-slate-600 font-medium py-2 border-b border-slate-50">About</a>
-                <a href="#skills" class="mobile-link text-left text-slate-600 font-medium py-2 border-b border-slate-50">Skills</a>
+                <a href="#competencies" class="mobile-link text-left text-slate-600 font-medium py-2 border-b border-slate-50">Competencies</a>
                 <a href="#experience" class="mobile-link text-left text-slate-600 font-medium py-2 border-b border-slate-50">Experience</a>
                 <a href="#projects" class="mobile-link text-left text-slate-600 font-medium py-2 border-b border-slate-50">Projects</a>
-                <a href="#research" class="mobile-link text-left text-slate-600 font-medium py-2 border-b border-slate-50">Research</a>
                 <a href="#contact" class="mobile-link text-left text-slate-600 font-medium py-2">Contact</a>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="relative pt-32 pb-20 md:pt-48 md:pb-32 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 text-white overflow-hidden">
+    <!-- Adjusted padding (py-24 instead of py-12) to create more vertical space ("zoom out" effect) -->
+    <section class="relative min-h-screen flex items-center py-24 md:py-32 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 text-white overflow-hidden">
         <!-- Abstract Background Shapes -->
         <div class="absolute top-0 left-0 w-full h-full overflow-hidden opacity-10 pointer-events-none">
             <div class="absolute top-10 right-10 w-64 h-64 bg-blue-400 rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
@@ -98,24 +97,24 @@
         </div>
 
         <div class="container mx-auto px-4 md:px-8 relative z-10">
-            <div class="flex flex-col-reverse md:flex-row items-center gap-12">
+            <div class="flex flex-col-reverse md:flex-row items-center justify-between gap-12 md:gap-16">
                 
                 <!-- Left Content -->
-                <div class="flex-1 max-w-2xl">
-                    <div class="inline-block px-4 py-1 bg-blue-500/20 border border-blue-400/30 rounded-full text-blue-200 text-sm font-semibold mb-6 backdrop-blur-sm">
+                <div class="flex-1 max-w-2xl space-y-8">
+                    <div class="inline-block px-4 py-1 bg-blue-500/20 border border-blue-400/30 rounded-full text-blue-200 text-sm font-semibold backdrop-blur-sm">
                         MS in Business Analytics Candidate • GPA 4.0
                     </div>
-                    <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+                    <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight">
                         Transforming Data into <br/>
                         <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">
                             Strategic Growth
                         </span>
                     </h1>
-                    <p class="text-xl text-slate-300 mb-10 leading-relaxed">
+                    <p class="text-lg md:text-xl text-slate-300 leading-relaxed max-w-xl">
                         Results-oriented Data Professional with a proven track record of bridging the gap between complex data infrastructure and business strategy.
                     </p>
                     
-                    <div class="flex flex-col sm:flex-row gap-4">
+                    <div class="flex flex-col sm:flex-row gap-4 pt-4">
                         <a href="#contact" class="px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white rounded-lg font-semibold transition-all shadow-lg shadow-blue-900/50 flex items-center justify-center gap-2">
                             <i data-lucide="mail" class="w-5 h-5"></i>
                             Get in Touch
@@ -128,7 +127,7 @@
                     </div>
 
                     <!-- Availability Badge -->
-                    <div class="mt-12 p-4 bg-slate-800/50 border border-slate-700 rounded-lg inline-flex items-start sm:items-center gap-3 backdrop-blur-md w-full sm:w-auto">
+                    <div class="p-4 bg-slate-800/50 border border-slate-700 rounded-lg inline-flex items-start sm:items-center gap-3 backdrop-blur-md w-full sm:w-auto mt-4">
                         <div class="p-2 bg-green-500/20 rounded-full mt-1 sm:mt-0">
                             <i data-lucide="calendar" class="w-5 h-5 text-green-400"></i>
                         </div>
@@ -144,8 +143,9 @@
                 </div>
 
                 <!-- Right Content: Profile Photo -->
-                <div class="md:w-1/3 flex justify-center relative">
-                    <div class="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96">
+                <!-- Using flex-col and justify-end on a wrapper to push the image down visually without excessive margins -->
+                <div class="md:w-1/3 flex flex-col justify-end h-full relative pt-12 md:pt-32"> 
+                    <div class="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 mx-auto">
                         <!-- Decorative rings behind photo -->
                         <div class="absolute inset-0 bg-gradient-to-tr from-blue-600 to-cyan-400 rounded-full animate-pulse opacity-20 blur-xl"></div>
                         <!-- Image Container -->
@@ -160,94 +160,106 @@
         </div>
     </section>
 
-    <!-- About Summary Section -->
-    <section id="about" class="py-20 bg-white scroll-mt-20">
+    <!-- Philosophy / About Section (Expanded) -->
+    <section id="about" class="py-20 bg-white">
         <div class="container mx-auto px-4 md:px-8">
-            <div class="max-w-3xl mx-auto text-center mb-16">
-                <h2 class="text-3xl font-bold text-slate-900 mb-4">Executive Summary</h2>
-                <div class="h-1 w-20 bg-blue-600 mx-auto rounded-full"></div>
-            </div>
-
-            <div class="bg-slate-50 rounded-2xl p-8 md:p-12 shadow-sm border border-slate-100">
-                <p class="text-lg text-slate-700 leading-relaxed mb-6">
-                    Results-driven Business Intelligence Developer with nearly 4 years of experience architecting scalable data solutions on Google Cloud Platform. Expert in designing advanced LookML models, implementing Persistent Derived Tables (PDTs) for optimized query performance, and securing data ecosystems via RBAC. Proven track record of automating analytics workflows using Looker APIs to increase operational efficiency by 40%, while delivering 30+ high-impact dashboards that drive strategic decision-making.
-                </p>
-                <p class="text-lg text-slate-700 leading-relaxed">
-                    Graduating with a Master of Science in Business Analytics from Arizona State University (GPA 4.0) in December 2025. I am on an F1 visa, eligible for 3 years of STEM OPT work authorization with an confirmed EAD start date of February 2, 2026, and am available for full-time employment anywhere in the United States.
-                </p>
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-slate-900 mb-4">Beyond the Resume</h2>
+                    <div class="h-1 w-20 bg-blue-600 mx-auto rounded-full"></div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                    <div class="bg-slate-50 p-8 rounded-2xl border border-slate-100">
+                         <h3 class="text-xl font-bold text-slate-800 mb-4">My Data Philosophy</h3>
+                         <p class="text-slate-700 leading-relaxed mb-4">
+                            I believe data isn't just about numbers—it's about <b>clarity</b>. My approach combines rigorous technical engineering with a strategic mindset. I don't just build dashboards; I build <b>decision support systems</b> that are scalable, secure, and intuitive.
+                         </p>
+                         <p class="text-slate-700 leading-relaxed">
+                            Whether optimizing a SQL query by 40% or designing a new ML model for predictive health, my goal is always the same: <b>reduce friction and accelerate insight.</b>
+                         </p>
+                    </div>
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4">
+                            <div class="p-3 bg-blue-100 text-blue-600 rounded-lg shrink-0">
+                                <i data-lucide="shield-check" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-900">Governance First</h4>
+                                <p class="text-sm text-slate-600">Security and compliance (RBAC) are built-in, not bolted on.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="p-3 bg-purple-100 text-purple-600 rounded-lg shrink-0">
+                                <i data-lucide="zap" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-900">Performance Optimized</h4>
+                                <p class="text-sm text-slate-600">Obsessed with query efficiency, PDTs, and low-latency pipelines.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="p-3 bg-green-100 text-green-600 rounded-lg shrink-0">
+                                <i data-lucide="users" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-900">User-Centric Design</h4>
+                                <p class="text-sm text-slate-600">Dashboards designed for end-users, ensuring high adoption rates.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="py-20 bg-slate-50 scroll-mt-20">
+    <!-- Key Competencies (New Visual Section) -->
+    <section id="competencies" class="py-20 bg-slate-50">
         <div class="container mx-auto px-4 md:px-8">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-12">
-                <div>
-                    <h2 class="text-3xl font-bold text-slate-900 mb-4">Technical Expertise</h2>
-                    <div class="h-1 w-20 bg-blue-600 rounded-full"></div>
-                </div>
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-slate-900 mb-4">Core Competencies</h2>
+                <p class="text-slate-600 max-w-2xl mx-auto">A snapshot of my technical and analytical capabilities.</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Skill Card 1 -->
-                <div class="bg-white p-8 rounded-xl shadow-sm border border-slate-200 hover:shadow-md transition-shadow relative overflow-hidden">
-                    <div class="absolute top-0 right-0 w-20 h-20 bg-blue-50 rounded-bl-full -mr-4 -mt-4"></div>
-                    <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600 mb-6 relative z-10">
-                        <i data-lucide="bar-chart-3" class="w-6 h-6"></i>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Card 1 -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 hover:-translate-y-1 transition-transform">
+                    <div class="w-10 h-10 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center mb-4">
+                        <i data-lucide="database" class="w-5 h-5"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-4 relative z-10">BI & Visualization</h3>
-                    <div class="flex flex-wrap gap-2 relative z-10">
-                        <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm font-medium">Tableau</span>
-                        <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm font-medium">Power BI</span>
-                        <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm font-medium">Looker</span>
-                        <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm font-medium">QlikView</span>
-                        <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm font-medium">Qlik Sense</span>
-                        <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm font-medium">LookML</span>
-                    </div>
+                    <h3 class="font-bold text-slate-900 mb-2">Data Engineering</h3>
+                    <p class="text-sm text-slate-600">ETL/ELT pipelines, SQL optimization, BigQuery, Snowflake, Dataflow.</p>
                 </div>
-
-                <!-- Skill Card 2 -->
-                <div class="bg-white p-8 rounded-xl shadow-sm border border-slate-200 hover:shadow-md transition-shadow relative overflow-hidden">
-                    <div class="absolute top-0 right-0 w-20 h-20 bg-indigo-50 rounded-bl-full -mr-4 -mt-4"></div>
-                    <div class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center text-indigo-600 mb-6 relative z-10">
-                        <i data-lucide="cloud" class="w-6 h-6"></i>
+                <!-- Card 2 -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 hover:-translate-y-1 transition-transform">
+                     <div class="w-10 h-10 bg-indigo-100 text-indigo-600 rounded-lg flex items-center justify-center mb-4">
+                        <i data-lucide="bar-chart-2" class="w-5 h-5"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-4 relative z-10">Cloud & Engineering</h3>
-                    <div class="flex flex-wrap gap-2 relative z-10">
-                        <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm font-medium">GCP</span>
-                        <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm font-medium">BigQuery</span>
-                        <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm font-medium">Pub/Sub</span>
-                        <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm font-medium">Dataflow</span>
-                        <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm font-medium">Cloud Monitoring</span>
-                        <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm font-medium">Snowflake</span>
-                        <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm font-medium">Git</span>
-                    </div>
+                    <h3 class="font-bold text-slate-900 mb-2">Advanced BI</h3>
+                    <p class="text-sm text-slate-600">LookML modeling, Tableau & Power BI, Interactive Dashboards, API Automation.</p>
                 </div>
-
-                <!-- Skill Card 3 -->
-                <div class="bg-white p-8 rounded-xl shadow-sm border border-slate-200 hover:shadow-md transition-shadow relative overflow-hidden">
-                     <div class="absolute top-0 right-0 w-20 h-20 bg-cyan-50 rounded-bl-full -mr-4 -mt-4"></div>
-                    <div class="w-12 h-12 bg-cyan-100 rounded-lg flex items-center justify-center text-cyan-600 mb-6 relative z-10">
-                        <i data-lucide="terminal" class="w-6 h-6"></i>
+                <!-- Card 3 -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 hover:-translate-y-1 transition-transform">
+                     <div class="w-10 h-10 bg-teal-100 text-teal-600 rounded-lg flex items-center justify-center mb-4">
+                        <i data-lucide="map" class="w-5 h-5"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-4 relative z-10">Languages & Analytics</h3>
-                    <div class="flex flex-wrap gap-2 relative z-10">
-                        <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm font-medium">Python (Basic)</span>
-                        <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm font-medium">SQL (Advanced)</span>
-                        <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm font-medium">Pandas</span>
-                        <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm font-medium">NumPy</span>
-                        <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm font-medium">Seaborn</span>
-                        <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm font-medium">Machine Learning</span>
-                        <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm font-medium">ETL</span>
+                    <h3 class="font-bold text-slate-900 mb-2">Geospatial Analytics</h3>
+                    <p class="text-sm text-slate-600">TopoJSON, BigQuery GIS, Regional Market Analysis & Mapping.</p>
+                </div>
+                <!-- Card 4 -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 hover:-translate-y-1 transition-transform">
+                     <div class="w-10 h-10 bg-orange-100 text-orange-600 rounded-lg flex items-center justify-center mb-4">
+                        <i data-lucide="brain-circuit" class="w-5 h-5"></i>
                     </div>
+                    <h3 class="font-bold text-slate-900 mb-2">Predictive Modeling</h3>
+                    <p class="text-sm text-slate-600">Python (Scikit-Learn), Regression Analysis, Forecasting, Machine Learning.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Experience Section -->
-    <section id="experience" class="py-20 bg-white scroll-mt-20">
+    <section id="experience" class="py-20 bg-white">
         <div class="container mx-auto px-4 md:px-8">
             <h2 class="text-3xl font-bold text-slate-900 mb-12">Professional Experience</h2>
 
@@ -325,7 +337,7 @@
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="py-20 bg-slate-50 scroll-mt-20">
+    <section id="projects" class="py-20 bg-slate-50">
         <div class="container mx-auto px-4 md:px-8">
             <h2 class="text-3xl font-bold text-slate-900 mb-12">Featured Projects</h2>
 
@@ -410,7 +422,7 @@
     </section>
 
     <!-- Research Section -->
-    <section id="research" class="py-20 bg-white scroll-mt-20">
+    <section id="research" class="py-20 bg-white">
         <div class="container mx-auto px-4 md:px-8">
             <h2 class="text-3xl font-bold text-slate-900 mb-8">Research & Publications</h2>
             <div class="bg-slate-50 rounded-xl p-8 border border-slate-200 shadow-sm flex flex-col md:flex-row gap-8 items-center">
@@ -439,7 +451,7 @@
     </section>
 
     <!-- Education & Certifications -->
-    <section class="py-20 bg-white scroll-mt-20">
+    <section class="py-20 bg-white">
         <div class="container mx-auto px-4 md:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
                 
@@ -500,7 +512,7 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-20 bg-slate-900 text-white scroll-mt-20">
+    <section id="contact" class="py-20 bg-slate-900 text-white">
         <div class="container mx-auto px-4 md:px-8 text-center">
             <h2 class="text-3xl font-bold mb-8">Let's Work Together</h2>
             <p class="text-slate-300 mb-12 max-w-2xl mx-auto">
