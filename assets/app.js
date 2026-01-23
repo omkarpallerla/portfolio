@@ -43,7 +43,7 @@ const lt = $("#linkedinTop"), lb = $("#linkedinBottom");
 if(lt) lt.href = LINKEDIN_URL;
 if(lb) lb.href = LINKEDIN_URL;
 
-/* ---------- Copy buttons ---------- */
+/* ---------- Copy actions ---------- */
 const copyEmailBtn = $("#copyEmail");
 if(copyEmailBtn){
   copyEmailBtn.addEventListener("click", async () => {
@@ -64,7 +64,7 @@ const emailBtn = $("#emailBtn");
 if(emailBtn){
   emailBtn.addEventListener("click", (e) => {
     e.preventDefault();
-    const subject = "Connecting — Analytics / BI / BA Role";
+    const subject = "Connecting — Analytics / BI / Business Delivery";
     const body = encodeURIComponent(
       "Hi Omkar,\n\nI came across your portfolio and would like to connect.\n\nRole:\nCompany:\nBest time to chat:\n\nThanks,\n"
     );
@@ -76,114 +76,92 @@ if(emailBtn){
 const year = $("#year");
 if(year) year.textContent = new Date().getFullYear();
 
-/* ---------- Role Tabs (hero) ---------- */
-const roleTabs = $$(".tab[data-role]");
-const roleBadge = $("#roleBadge");
-const roleKicker = $("#roleKicker");
-const heroSub = $("#heroSub");
-const primaryResumeBtn = $("#primaryResumeBtn");
+/* ---------- Case Study filter buttons ---------- */
+const filterBtns = $$(".filterBtn");
+const caseCards = $$("#caseGrid .projectCard");
 
-const roleCopy = {
+function applyFilter(filter){
+  caseCards.forEach(card=>{
+    card.style.display = (filter === "all" || card.dataset.role === filter) ? "block" : "none";
+  });
+}
+
+filterBtns.forEach(btn=>{
+  btn.addEventListener("click", ()=>{
+    filterBtns.forEach(b=>b.classList.remove("active"));
+    btn.classList.add("active");
+    applyFilter(btn.dataset.filter);
+    showToast(`Filter: ${btn.textContent}`);
+  });
+});
+
+/* ---------- Focus Tabs (hero role highlighter) ---------- */
+const tabs = $$(".tab[data-role]");
+const roleBadge = $("#roleBadge");
+const heroKicker = $("#heroKicker");
+const heroSub = $("#heroSub");
+const caseFilterMap = { all: "all", bi: "bi", da: "da", ba: "ba" };
+
+const copyByRole = {
   all: {
     badge: "All",
-    kicker: "Analytics that moves from data → decisions",
-    sub: "I work across <b>Data Analytics</b>, <b>BI Development</b>, and <b>Business Analysis</b> — translating stakeholder needs into clean KPI definitions, scalable reporting, and measurable outcomes.",
-    resumeText: "⬇ Download Resume (BI)",
-    resumeHref: "assets/docs/Omkar_Pallerla_BI_Developer.pdf",
+    kicker: "I design trusted metrics and insights that drive decisions.",
+    sub: "I bridge <b>data analysis</b>, <b>BI development</b>, and <b>business delivery</b> — turning messy questions into clean KPIs, reliable reporting, and outcomes stakeholders can act on."
   },
   bi: {
-    badge: "BI Developer",
-    kicker: "BI: governed metrics + dashboards that scale",
-    sub: "I build <b>semantic layers</b>, standardize KPIs, and ship dashboards in Looker/Tableau/Power BI with governance and performance in mind.",
-    resumeText: "⬇ Download Resume (BI)",
-    resumeHref: "assets/docs/Omkar_Pallerla_BI_Developer.pdf",
+    badge: "BI & Governance",
+    kicker: "BI: prevent metric drift, scale self-service, and ship dashboards that teams trust.",
+    sub: "I build <b>governed KPI definitions</b>, reusable models, and dashboards designed for adoption — with performance and governance in mind."
   },
   da: {
-    badge: "Data Analyst",
-    kicker: "DA: insights, cohorts, and KPI storytelling",
-    sub: "I translate data into decisions through <b>EDA</b>, <b>cohorts/funnels</b>, and clear KPI narratives that stakeholders can act on.",
-    resumeText: "⬇ Download Resume (DA)",
-    resumeHref: "assets/docs/Omkar_Pallerla_Data_Analyst.pdf",
+    badge: "Data Insights",
+    kicker: "DA: find KPI drivers through EDA, cohorts, and storytelling.",
+    sub: "I translate data into decisions with <b>EDA</b>, <b>cohorts/segments</b>, and clear KPI narratives that stakeholders can execute."
   },
   ba: {
-    badge: "Business Analyst",
-    kicker: "BA: requirements → UAT → launch",
-    sub: "I run requirement workshops, write <b>user stories</b> + <b>acceptance criteria</b>, and coordinate UAT for confident releases.",
-    resumeText: "⬇ Download Resume (BA)",
-    resumeHref: "assets/docs/Omkar_Pallerla_IT_Business_Analyst.pdf",
+    badge: "Business Delivery",
+    kicker: "BA: turn ambiguity into clarity — requirements, acceptance criteria, and UAT readiness.",
+    sub: "I run workshops, define scope and success metrics, write <b>user stories</b> + <b>acceptance criteria</b>, and coordinate UAT for confident releases."
   }
 };
 
 function applyRole(role){
-  const cfg = roleCopy[role] || roleCopy.all;
+  const cfg = copyByRole[role] || copyByRole.all;
   if(roleBadge) roleBadge.textContent = cfg.badge;
-  if(roleKicker) roleKicker.textContent = cfg.kicker;
+  if(heroKicker) heroKicker.textContent = cfg.kicker;
   if(heroSub) heroSub.innerHTML = cfg.sub;
-  if(primaryResumeBtn){
-    primaryResumeBtn.textContent = cfg.resumeText;
-    primaryResumeBtn.href = cfg.resumeHref;
-  }
 
-  // highlight case study cards
-  const cards = $$("#caseGrid .projectCard");
-  cards.forEach(card=>{
-    const r = card.dataset.role;
-    if(role === "all" || r === role){
-      card.style.display = "block";
-    } else {
-      card.style.display = "none";
-    }
+  // sync filter buttons (best UX)
+  const mapped = caseFilterMap[role] || "all";
+  filterBtns.forEach(b=>{
+    b.classList.toggle("active", b.dataset.filter === mapped);
   });
-  showToast(`Role: ${cfg.badge}`);
+  applyFilter(mapped);
+  showToast(`Focus: ${cfg.badge}`);
 }
 
-roleTabs.forEach(btn=>{
+tabs.forEach(btn=>{
   btn.addEventListener("click", ()=>{
-    roleTabs.forEach(b=>b.classList.remove("active"));
+    tabs.forEach(b=>b.classList.remove("active"));
     btn.classList.add("active");
     applyRole(btn.dataset.role);
   });
 });
 
-/* ---------- Filters (case studies) ---------- */
-const filterBtns = $$(".filterBtn");
-filterBtns.forEach(btn=>{
-  btn.addEventListener("click", ()=>{
-    filterBtns.forEach(b=>b.classList.remove("active"));
-    btn.classList.add("active");
-    const f = btn.dataset.filter;
-    const cards = $$("#caseGrid .projectCard");
-    cards.forEach(card=>{
-      card.style.display = (f === "all" || card.dataset.role === f) ? "block" : "none";
-    });
-    showToast(`Filter: ${btn.textContent}`);
-  });
-});
-
 /* ---------- Skill narrative ---------- */
 const skillNarrative = $("#skillNarrative");
-const chips = $$(".chip[data-skill]");
+const skillChips = $$(".chip[data-skill]");
 const skillText = {
-  SQL: "<b>SQL</b> is my daily driver: clean transformations, reliable reconciliations, and performance-friendly reporting queries.",
+  SQL: "<b>SQL</b> is my daily driver: clean transformations, reconciliations, and performance-friendly reporting queries.",
   Looker: "<b>Looker/LookML</b>: semantic layers, KPI standardization, explores, and governance patterns to scale self-service.",
-  Tableau: "<b>Tableau</b>: stakeholder-friendly visuals and KPI dashboards designed for quick decisions.",
-  PowerBI: "<b>Power BI</b>: DAX-driven KPIs, interactive reporting, and operational dashboards.",
-  Excel: "<b>Excel</b>: fast validation, reconciliation, pivot-based analysis, and stakeholder-ready summaries.",
-  BigQuery: "<b>BigQuery</b>: warehouse-scale reporting and query optimization for large datasets.",
-  Snowflake: "<b>Snowflake</b>: scalable analytics models and consistent KPI reporting across teams.",
-  Python: "<b>Python</b>: EDA, feature engineering, quick prototypes, and repeatable analysis workflows.",
-  Req: "<b>Requirements</b>: structured elicitation, scope clarity, and documentation that prevents rework.",
-  Stories: "<b>User stories</b>: clear, testable stories that align dev + stakeholders.",
-  AC: "<b>Acceptance criteria</b>: measurable outcomes and edge cases that reduce ambiguity.",
-  UAT: "<b>UAT</b>: test planning, validation, defect triage, and go-live confidence.",
-  Agile: "<b>Agile/Scrum</b>: backlog refinement, sprint planning support, and release readiness.",
-  Stakeholders: "<b>Stakeholder management</b>: aligning priorities, tradeoffs, and success metrics.",
-  KPI: "<b>KPI frameworks</b>: definitions, owners, grain, sources, and validation checks."
+  BI: "<b>Dashboards</b>: UX patterns that drive adoption—clear filters, drilldowns, and progressive disclosure.",
+  BA: "<b>Requirements</b>: structured elicitation and scope clarity that prevents rework.",
+  UAT: "<b>UAT</b>: scenarios mapped to acceptance criteria, defect triage, and release readiness.",
+  Stakeholders: "<b>Stakeholders</b>: align priorities, tradeoffs, and success criteria so delivery stays focused."
 };
-
-chips.forEach(ch=>{
+skillChips.forEach(ch=>{
   ch.addEventListener("click", ()=>{
-    chips.forEach(c=>c.classList.remove("active"));
+    skillChips.forEach(c=>c.classList.remove("active"));
     ch.classList.add("active");
     const key = ch.dataset.skill;
     if(skillNarrative && skillText[key]) skillNarrative.innerHTML = skillText[key];
