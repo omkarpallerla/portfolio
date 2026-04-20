@@ -1,1014 +1,405 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Omkar Pallerla — BI Developer & Data Analyst</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=DM+Mono:wght@300;400;500&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet"/>
-<style>
-/* ── Reset & Base ───────────────────────────────────────── */
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-:root{
-  --cream:#FAFAF7;
-  --white:#FFFFFF;
-  --ink:#0F0F0E;
-  --ink2:#2C2C2A;
-  --muted:#6B6B65;
-  --border:#E2E2DC;
-  --border2:#CDCDC5;
-  --accent:#1A6B4A;
-  --accent2:#2D8F63;
-  --accent-light:#E8F5EE;
-  --accent-pale:#F2FAF5;
-  --blue:#1B4FBF;
-  --amber:#B85C00;
-  --red:#B32B2B;
-  --tag-bg:#F0F0EB;
-  --shadow:0 1px 3px rgba(0,0,0,0.06),0 4px 16px rgba(0,0,0,0.05);
-  --shadow-lg:0 8px 40px rgba(0,0,0,0.09);
-  --r:10px;
-  --r-sm:6px;
-}
-html{scroll-behavior:smooth;font-size:16px;}
-body{
-  font-family:'Sora',sans-serif;
-  background:var(--cream);
-  color:var(--ink);
-  line-height:1.6;
-  -webkit-font-smoothing:antialiased;
-  cursor:none;
-}
-a{color:inherit;text-decoration:none;}
-img{max-width:100%;display:block;}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Omkar Pallerla — BI Developer & Data Analyst. Turning data into decisions that matter." />
+  <title>Omkar Pallerla · BI Developer & Data Analyst</title>
 
-/* ── Custom Cursor ──────────────────────────────────────── */
-#cur{position:fixed;width:10px;height:10px;background:var(--accent);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform .15s,background .15s,width .2s,height .2s;}
-#cur-ring{position:fixed;width:32px;height:32px;border:1.5px solid var(--accent);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:transform .08s;}
-body:has(a:hover) #cur,body:has(button:hover) #cur{width:20px;height:20px;background:var(--accent2);}
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
-/* ── Nav ────────────────────────────────────────────────── */
-nav{
-  position:fixed;top:0;left:0;right:0;z-index:100;
-  display:flex;align-items:center;justify-content:space-between;
-  padding:0 48px;height:64px;
-  background:rgba(250,250,247,0.92);
-  backdrop-filter:blur(12px);
-  border-bottom:1px solid transparent;
-  transition:border-color .3s,box-shadow .3s;
-}
-nav.scrolled{border-color:var(--border);box-shadow:0 2px 12px rgba(0,0,0,0.06);}
-.nav-logo{
-  font-family:'DM Mono',monospace;
-  font-size:14px;font-weight:500;
-  color:var(--ink);letter-spacing:.02em;
-}
-.nav-logo span{color:var(--accent);}
-.nav-links{display:flex;align-items:center;gap:36px;}
-.nav-links a{
-  font-size:13px;font-weight:500;
-  color:var(--muted);letter-spacing:.02em;
-  transition:color .2s;
-}
-.nav-links a:hover{color:var(--ink);}
-.nav-cta{
-  font-size:12px;font-weight:600;
-  background:var(--ink);color:var(--white);
-  padding:8px 20px;border-radius:99px;
-  letter-spacing:.04em;text-transform:uppercase;
-  transition:background .2s,transform .15s;
-}
-.nav-cta:hover{background:var(--accent);transform:translateY(-1px);}
-
-/* ── Hero ───────────────────────────────────────────────── */
-.hero{
-  min-height:100vh;
-  display:flex;align-items:center;
-  padding:120px 48px 80px;
-  position:relative;
-  overflow:hidden;
-}
-.hero-bg{
-  position:absolute;inset:0;
-  background:
-    radial-gradient(ellipse 60% 50% at 80% 20%, rgba(26,107,74,0.06) 0%, transparent 60%),
-    radial-gradient(ellipse 40% 60% at 10% 80%, rgba(27,79,191,0.04) 0%, transparent 60%);
-  pointer-events:none;
-}
-.hero-grid{
-  position:absolute;inset:0;
-  background-image:
-    linear-gradient(var(--border) 1px, transparent 1px),
-    linear-gradient(90deg, var(--border) 1px, transparent 1px);
-  background-size:60px 60px;
-  opacity:0.4;
-  pointer-events:none;
-}
-.hero-inner{max-width:1100px;margin:0 auto;position:relative;z-index:1;width:100%;}
-.hero-eyebrow{
-  display:inline-flex;align-items:center;gap:8px;
-  font-family:'DM Mono',monospace;font-size:11px;font-weight:500;
-  color:var(--accent);letter-spacing:.12em;text-transform:uppercase;
-  background:var(--accent-light);
-  padding:6px 14px;border-radius:99px;
-  border:1px solid rgba(26,107,74,0.2);
-  margin-bottom:28px;
-}
-.hero-eyebrow::before{content:'';width:6px;height:6px;background:var(--accent);border-radius:50%;animation:blink 2s infinite;}
-@keyframes blink{0%,100%{opacity:1;}50%{opacity:0;}}
-.hero h1{
-  font-family:'Playfair Display',serif;
-  font-size:clamp(52px,7vw,96px);
-  font-weight:900;
-  line-height:1.0;
-  letter-spacing:-.03em;
-  color:var(--ink);
-  margin-bottom:8px;
-}
-.hero h1 em{
-  font-style:normal;
-  color:var(--accent);
-  position:relative;
-}
-.hero-sub{
-  font-size:clamp(14px,1.5vw,18px);
-  color:var(--muted);
-  max-width:560px;
-  margin:24px 0 48px;
-  line-height:1.7;
-  font-weight:400;
-}
-.hero-sub strong{color:var(--ink);font-weight:600;}
-.hero-actions{display:flex;gap:16px;flex-wrap:wrap;align-items:center;margin-bottom:64px;}
-.btn-primary{
-  display:inline-flex;align-items:center;gap:8px;
-  background:var(--ink);color:var(--white);
-  padding:14px 28px;border-radius:99px;
-  font-size:14px;font-weight:600;letter-spacing:.03em;
-  transition:background .2s,transform .15s,box-shadow .2s;
-}
-.btn-primary:hover{background:var(--accent);transform:translateY(-2px);box-shadow:0 8px 24px rgba(26,107,74,0.25);}
-.btn-secondary{
-  display:inline-flex;align-items:center;gap:8px;
-  background:transparent;color:var(--ink);
-  padding:13px 28px;border-radius:99px;
-  font-size:14px;font-weight:600;letter-spacing:.03em;
-  border:1.5px solid var(--border2);
-  transition:border-color .2s,background .2s,transform .15s;
-}
-.btn-secondary:hover{border-color:var(--ink);background:var(--white);transform:translateY(-2px);}
-.hero-stats{
-  display:flex;gap:48px;flex-wrap:wrap;
-  padding-top:48px;
-  border-top:1px solid var(--border);
-}
-.stat-item{}
-.stat-num{
-  font-family:'Playfair Display',serif;
-  font-size:36px;font-weight:700;
-  color:var(--ink);line-height:1;
-}
-.stat-label{
-  font-size:12px;font-weight:500;
-  color:var(--muted);margin-top:4px;
-  letter-spacing:.04em;text-transform:uppercase;
-}
-.hero-chips{
-  position:absolute;right:0;top:50%;transform:translateY(-50%);
-  display:flex;flex-direction:column;gap:10px;
-  opacity:.85;
-}
-.chip{
-  background:var(--white);
-  border:1px solid var(--border);
-  border-radius:99px;
-  padding:8px 16px;
-  font-family:'DM Mono',monospace;
-  font-size:11px;font-weight:500;
-  color:var(--ink2);
-  white-space:nowrap;
-  box-shadow:var(--shadow);
-  animation:float 4s ease-in-out infinite;
-}
-.chip:nth-child(2){animation-delay:.6s;}
-.chip:nth-child(3){animation-delay:1.2s;}
-.chip:nth-child(4){animation-delay:1.8s;}
-.chip:nth-child(5){animation-delay:2.4s;}
-@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-6px);}}
-
-/* ── Sections ───────────────────────────────────────────── */
-section{padding:100px 48px;}
-.section-inner{max-width:1100px;margin:0 auto;}
-.section-label{
-  font-family:'DM Mono',monospace;
-  font-size:11px;font-weight:500;
-  color:var(--accent);letter-spacing:.14em;text-transform:uppercase;
-  margin-bottom:12px;display:flex;align-items:center;gap:10px;
-}
-.section-label::after{content:'';flex:1;height:1px;background:var(--border);}
-.section-title{
-  font-family:'Playfair Display',serif;
-  font-size:clamp(32px,4vw,52px);
-  font-weight:700;color:var(--ink);
-  line-height:1.1;letter-spacing:-.02em;
-  margin-bottom:20px;
-}
-.section-desc{
-  font-size:16px;color:var(--muted);
-  max-width:600px;line-height:1.7;
-  margin-bottom:60px;
-}
-
-/* ── About ──────────────────────────────────────────────── */
-#about{background:var(--white);}
-.about-grid{
-  display:grid;grid-template-columns:1fr 1fr;
-  gap:80px;align-items:start;
-}
-.about-text p{
-  font-size:15px;color:var(--ink2);
-  line-height:1.8;margin-bottom:20px;
-}
-.about-text p strong{color:var(--ink);font-weight:600;}
-.about-highlight{
-  background:var(--accent-pale);
-  border-left:3px solid var(--accent);
-  padding:16px 20px;border-radius:0 var(--r-sm) var(--r-sm) 0;
-  margin:28px 0;
-  font-size:14px;color:var(--ink2);line-height:1.7;
-  font-style:italic;
-}
-.timeline{margin-top:8px;}
-.tl-item{
-  display:flex;gap:24px;
-  padding:20px 0;
-  border-bottom:1px solid var(--border);
-}
-.tl-item:last-child{border-bottom:none;}
-.tl-year{
-  font-family:'DM Mono',monospace;font-size:11px;font-weight:500;
-  color:var(--muted);white-space:nowrap;padding-top:3px;
-  min-width:80px;
-}
-.tl-content h4{font-size:14px;font-weight:600;color:var(--ink);margin-bottom:4px;}
-.tl-content p{font-size:13px;color:var(--muted);line-height:1.6;}
-.skill-groups{display:flex;flex-direction:column;gap:28px;}
-.skill-group{}
-.skill-group-label{
-  font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--muted);margin-bottom:12px;
-}
-.skill-tags{display:flex;flex-wrap:wrap;gap:8px;}
-.tag{
-  font-family:'DM Mono',monospace;
-  font-size:11px;font-weight:500;
-  background:var(--tag-bg);color:var(--ink2);
-  padding:5px 12px;border-radius:var(--r-sm);
-  border:1px solid var(--border);
-  transition:background .2s,border-color .2s,color .2s;
-}
-.tag:hover{background:var(--accent-light);border-color:rgba(26,107,74,0.3);color:var(--accent);}
-.tag.accent{background:var(--accent-light);color:var(--accent);border-color:rgba(26,107,74,0.25);}
-
-/* ── Projects ───────────────────────────────────────────── */
-#projects{background:var(--cream);}
-.filter-bar{
-  display:flex;gap:8px;margin-bottom:48px;flex-wrap:wrap;
-}
-.filter-btn{
-  font-size:12px;font-weight:600;letter-spacing:.04em;
-  padding:8px 18px;border-radius:99px;
-  border:1.5px solid var(--border2);
-  background:transparent;color:var(--muted);
-  cursor:none;transition:all .2s;
-}
-.filter-btn.active,.filter-btn:hover{
-  background:var(--ink);color:var(--white);border-color:var(--ink);
-}
-.projects-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:24px;
-}
-.project-card{
-  background:var(--white);
-  border:1px solid var(--border);
-  border-radius:var(--r);
-  overflow:hidden;
-  transition:transform .25s,box-shadow .25s,border-color .25s;
-  display:flex;flex-direction:column;
-}
-.project-card:hover{
-  transform:translateY(-4px);
-  box-shadow:var(--shadow-lg);
-  border-color:var(--border2);
-}
-.project-card.featured{
-  grid-column:span 2;
-  flex-direction:row;
-}
-.card-accent{
-  height:4px;
-  background:linear-gradient(90deg,var(--accent),var(--accent2));
-}
-.card-body{padding:24px;flex:1;display:flex;flex-direction:column;}
-.card-icon{
-  font-size:24px;margin-bottom:16px;
-  width:48px;height:48px;
-  background:var(--accent-pale);
-  border-radius:var(--r-sm);
-  display:flex;align-items:center;justify-content:center;
-}
-.card-title{
-  font-size:15px;font-weight:600;
-  color:var(--ink);margin-bottom:8px;line-height:1.3;
-}
-.card-desc{
-  font-size:13px;color:var(--muted);
-  line-height:1.65;margin-bottom:16px;flex:1;
-}
-.card-stats{
-  display:flex;gap:16px;margin-bottom:16px;flex-wrap:wrap;
-}
-.cstat{
-  text-align:left;
-}
-.cstat-num{
-  font-family:'Playfair Display',serif;
-  font-size:20px;font-weight:700;
-  color:var(--ink);line-height:1;
-}
-.cstat-label{font-size:10px;color:var(--muted);font-weight:500;letter-spacing:.04em;text-transform:uppercase;margin-top:2px;}
-.card-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px;}
-.card-tag{
-  font-family:'DM Mono',monospace;
-  font-size:10px;font-weight:500;
-  background:var(--tag-bg);color:var(--muted);
-  padding:3px 9px;border-radius:4px;
-  border:1px solid var(--border);
-}
-.card-link{
-  display:inline-flex;align-items:center;gap:6px;
-  font-size:12px;font-weight:600;color:var(--accent);
-  letter-spacing:.04em;margin-top:auto;
-  transition:gap .2s;
-}
-.card-link:hover{gap:10px;}
-.card-link::after{content:'→';}
-
-/* ── Certs & Stack ──────────────────────────────────────── */
-#stack{background:var(--white);}
-.stack-grid{
-  display:grid;grid-template-columns:repeat(4,1fr);
-  gap:20px;
-}
-.stack-group{
-  background:var(--cream);
-  border:1px solid var(--border);
-  border-radius:var(--r);
-  padding:24px;
-}
-.stack-group-title{
-  font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--muted);margin-bottom:16px;
-  padding-bottom:12px;border-bottom:1px solid var(--border);
-}
-.stack-item{
-  display:flex;align-items:center;gap:10px;
-  padding:8px 0;
-  border-bottom:1px solid var(--border);
-  font-size:13px;font-weight:500;color:var(--ink2);
-}
-.stack-item:last-child{border-bottom:none;}
-.stack-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0;}
-
-#certifications{background:var(--cream);}
-.certs-grid{
-  display:grid;grid-template-columns:repeat(3,1fr);
-  gap:24px;
-}
-.cert-card{
-  background:var(--white);
-  border:1px solid var(--border);
-  border-radius:var(--r);
-  padding:28px;
-  display:flex;flex-direction:column;
-  transition:transform .2s,box-shadow .2s;
-}
-.cert-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg);}
-.cert-badge{
-  width:48px;height:48px;border-radius:var(--r-sm);
-  display:flex;align-items:center;justify-content:center;
-  font-size:22px;margin-bottom:16px;
-}
-.cert-badge.azure{background:#E8F0FE;}
-.cert-badge.databricks{background:#FFF3E0;}
-.cert-badge.gcp{background:#E8F5E9;}
-.cert-name{font-size:15px;font-weight:600;color:var(--ink);margin-bottom:4px;line-height:1.3;}
-.cert-issuer{font-size:12px;color:var(--muted);font-weight:500;margin-bottom:16px;}
-.cert-pill{
-  display:inline-flex;align-items:center;gap:6px;
-  font-family:'DM Mono',monospace;font-size:10px;font-weight:500;
-  padding:4px 10px;border-radius:99px;
-  background:var(--accent-light);color:var(--accent);
-  border:1px solid rgba(26,107,74,0.2);
-  width:fit-content;margin-top:auto;
-}
-
-/* ── Contact ────────────────────────────────────────────── */
-#contact{background:var(--ink);color:var(--white);}
-#contact .section-label{color:rgba(255,255,255,0.4);}
-#contact .section-label::after{background:rgba(255,255,255,0.1);}
-#contact .section-title{color:var(--white);}
-.contact-grid{
-  display:grid;grid-template-columns:1fr 1fr;
-  gap:80px;align-items:center;
-}
-.contact-left p{
-  font-size:15px;color:rgba(255,255,255,0.6);
-  line-height:1.8;margin-bottom:32px;
-}
-.contact-links{display:flex;flex-direction:column;gap:16px;}
-.contact-link{
-  display:flex;align-items:center;gap:16px;
-  padding:16px 20px;
-  background:rgba(255,255,255,0.05);
-  border:1px solid rgba(255,255,255,0.1);
-  border-radius:var(--r);
-  color:rgba(255,255,255,0.8);
-  font-size:14px;font-weight:500;
-  transition:background .2s,border-color .2s;
-}
-.contact-link:hover{background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.2);color:var(--white);}
-.contact-link-icon{
-  width:36px;height:36px;border-radius:var(--r-sm);
-  background:rgba(255,255,255,0.08);
-  display:flex;align-items:center;justify-content:center;
-  font-size:16px;flex-shrink:0;
-}
-.contact-link-text{}
-.contact-link-label{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:2px;}
-.contact-link-value{font-size:13px;font-family:'DM Mono',monospace;color:rgba(255,255,255,0.85);}
-.availability-badge{
-  display:inline-flex;align-items:center;gap:8px;
-  background:rgba(26,107,74,0.2);
-  border:1px solid rgba(26,107,74,0.35);
-  color:#6EDBA8;
-  padding:8px 16px;border-radius:99px;
-  font-size:12px;font-weight:600;letter-spacing:.05em;
-  margin-bottom:24px;
-}
-.availability-badge::before{content:'';width:7px;height:7px;background:#6EDBA8;border-radius:50%;animation:blink 2s infinite;}
-.visa-note{
-  font-family:'DM Mono',monospace;
-  font-size:11px;color:rgba(255,255,255,0.35);
-  margin-top:24px;line-height:1.7;
-}
-
-/* ── Footer ─────────────────────────────────────────────── */
-footer{
-  background:var(--ink);
-  border-top:1px solid rgba(255,255,255,0.07);
-  padding:24px 48px;
-  display:flex;justify-content:space-between;align-items:center;
-}
-.footer-text{font-size:12px;color:rgba(255,255,255,0.3);font-family:'DM Mono',monospace;}
-
-/* ── Reveal animations ──────────────────────────────────── */
-.reveal{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease;}
-.reveal.visible{opacity:1;transform:none;}
-
-/* ── Responsive ─────────────────────────────────────────── */
-@media(max-width:900px){
-  nav{padding:0 24px;}
-  .nav-links{display:none;}
-  .hero{padding:100px 24px 60px;}
-  .hero-chips{display:none;}
-  section{padding:70px 24px;}
-  .about-grid,.contact-grid{grid-template-columns:1fr;}
-  .projects-grid{grid-template-columns:1fr;}
-  .project-card.featured{grid-column:span 1;flex-direction:column;}
-  .stack-grid,.certs-grid{grid-template-columns:1fr 1fr;}
-  footer{flex-direction:column;gap:12px;padding:24px;}
-}
-</style>
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 
-<div id="cur"></div>
-<div id="cur-ring"></div>
+  <!-- Cursor glow that follows pointer -->
+  <div class="cursor-glow" id="cursorGlow"></div>
 
-<!-- NAV -->
-<nav id="nav">
-  <div class="nav-logo"><span>OP</span> · Omkar Pallerla</div>
-  <div class="nav-links">
-    <a href="#about">About</a>
-    <a href="#projects">Projects</a>
-    <a href="#stack">Stack</a>
-    <a href="#certifications">Certs</a>
-    <a href="#contact">Contact</a>
-    <a href="https://linkedin.com/in/omkar-pallerla" target="_blank">LinkedIn ↗</a>
-  </div>
-  <a href="#contact" class="nav-cta">Let's Talk</a>
-</nav>
+  <!-- Noise + grid overlays -->
+  <div class="overlay-noise"></div>
+  <div class="overlay-grid"></div>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-grid"></div>
-  <div class="hero-inner">
-    <div class="hero-eyebrow">Available for BI & Analytics roles — Phoenix, AZ</div>
-    <h1>Turning data<br/>into <em>decisions</em><br/>that matter.</h1>
+  <!-- Scroll progress bar -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <a href="#top" class="nav-logo">
+      <span class="logo-mark">OP</span>
+      <span class="logo-text">Omkar Pallerla</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Work</a></li>
+      <li><a href="#stack">Stack</a></li>
+      <li><a href="#certs">Certs</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Let's talk <span>→</span></a>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero" id="top">
+    <canvas id="heroCanvas"></canvas>
+
+    <div class="hero-meta">
+      <span class="status-dot"></span>
+      <span>Available · Phoenix, AZ</span>
+      <span class="divider"></span>
+      <span class="mono">F-1 OPT ACTIVE</span>
+    </div>
+
+    <h1 class="hero-title">
+      <span class="line"><span class="word">Turning</span> <span class="word">data</span></span>
+      <span class="line"><span class="word">into</span> <em class="word italic">decisions</em></span>
+      <span class="line"><span class="word">that</span> <span class="word">matter.</span></span>
+    </h1>
+
     <p class="hero-sub">
-      <strong>BI Developer & Data Analyst</strong> with 4+ years building dashboards, pipelines, and analytics systems.
-      MS Business Analytics, ASU (4.0 GPA). Certified in Azure · Databricks · GCP.
+      <strong>BI Developer &amp; Data Analyst</strong> with 4+ years building dashboards,
+      pipelines, and analytics systems. MS Business Analytics, ASU (4.0 GPA).
+      Certified in <span class="mono">Azure · Databricks · GCP</span>.
     </p>
+
     <div class="hero-actions">
-      <a href="#projects" class="btn-primary">View My Work ↓</a>
-      <a href="#contact" class="btn-secondary">Get In Touch</a>
-      <a href="https://github.com/omkarpallerla" target="_blank" class="btn-secondary">GitHub ↗</a>
+      <a href="#projects" class="btn btn-primary">
+        <span>View my work</span>
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+      </a>
+      <a href="#contact" class="btn btn-ghost">Get in touch</a>
+      <a href="https://github.com/omkarpallerla" target="_blank" rel="noopener" class="btn btn-ghost">GitHub ↗</a>
     </div>
+
     <div class="hero-stats">
-      <div class="stat-item"><div class="stat-num">4+</div><div class="stat-label">Years Experience</div></div>
-      <div class="stat-item"><div class="stat-num">30+</div><div class="stat-label">Dashboards Built</div></div>
-      <div class="stat-item"><div class="stat-num">99%</div><div class="stat-label">Data Accuracy</div></div>
-      <div class="stat-item"><div class="stat-num">4.0</div><div class="stat-label">ASU GPA</div></div>
-      <div class="stat-item"><div class="stat-num">3×</div><div class="stat-label">Cloud Certified</div></div>
+      <div class="stat"><span class="stat-num" data-count="4" data-suffix="+">0</span><span class="stat-label">Years Experience</span></div>
+      <div class="stat"><span class="stat-num" data-count="30" data-suffix="+">0</span><span class="stat-label">Dashboards Built</span></div>
+      <div class="stat"><span class="stat-num" data-count="99" data-suffix="%">0</span><span class="stat-label">Data Accuracy</span></div>
+      <div class="stat"><span class="stat-num" data-count="4.0">0</span><span class="stat-label">ASU GPA</span></div>
+      <div class="stat"><span class="stat-num" data-count="3" data-suffix="×">0</span><span class="stat-label">Cloud Certified</span></div>
     </div>
-  </div>
-  <div class="hero-chips">
-    <div class="chip">Power BI · DAX · RLS</div>
-    <div class="chip">Snowflake · BigQuery</div>
-    <div class="chip">Python · XGBoost</div>
-    <div class="chip">Databricks · Spark</div>
-    <div class="chip">Tableau · Looker</div>
-  </div>
-</section>
 
-<!-- ABOUT -->
-<section id="about">
-  <div class="section-inner">
-    <div class="section-label">// 01 — about</div>
+    <div class="scroll-hint">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </header>
+
+  <!-- ABOUT -->
+  <section class="section" id="about">
+    <div class="section-head">
+      <span class="section-tag">// 01 — about</span>
+      <h2 class="section-title">BI Analyst. <em>Pipeline-aware.</em></h2>
+    </div>
+
     <div class="about-grid">
-      <div class="about-text reveal">
-        <h2 class="section-title">BI Analyst.<br/>Pipeline-aware.</h2>
-        <p>I'm a <strong>BI Developer and Data Analyst</strong> based in Phoenix, AZ with 4+ years of experience turning messy, fragmented data into reliable systems that drive decisions.</p>
-        <p>At <strong>Onix</strong>, I led a team of 4 BI developers, deployed <strong>30+ production dashboards</strong> adopted by C-suite, and built ETL pipelines delivering 99% data accuracy. I led a full Tableau-to-MicroStrategy migration — completed 3 weeks ahead of schedule.</p>
-        <div class="about-highlight">
-          "What makes me different: I build the dashboard <em>and</em> I can trace a data quality issue back to the pipeline — a rare combination that saves teams weeks of back-and-forth."
-        </div>
-        <p>My core strength is BI & analytics — Power BI (DAX, RLS, drill-through), Tableau, Looker/LookML, and SQL across BigQuery, Snowflake, and SQL Server. My DE background means I can fix what's upstream when the data is wrong.</p>
-        <div class="timeline">
-          <div class="tl-item">
-            <div class="tl-year">2025</div>
-            <div class="tl-content">
-              <h4>MS Business Analytics — ASU W.P. Carey</h4>
-              <p>4.0 GPA · December 2025 · Advanced analytics, ML, cloud data engineering</p>
-            </div>
-          </div>
-          <div class="tl-item">
-            <div class="tl-year">2021–24</div>
-            <div class="tl-content">
-              <h4>Data Analyst & Team Lead — Onix</h4>
-              <p>Led 4-person BI team · 30+ dashboards · 99% pipeline accuracy · Migration leader</p>
-            </div>
-          </div>
-          <div class="tl-item">
-            <div class="tl-year">2020</div>
-            <div class="tl-content">
-              <h4>Tableau Developer Intern — Infonyx</h4>
-              <p>Built dashboards improving revenue forecasting accuracy by 25% for airline client</p>
-            </div>
-          </div>
-        </div>
+      <div class="about-copy">
+        <p class="lead">
+          I'm a <strong>BI Developer and Data Analyst</strong> based in Phoenix, AZ with
+          4+ years of experience turning messy, fragmented data into reliable systems
+          that drive decisions.
+        </p>
+        <p>
+          At <strong>Onix</strong>, I led a team of 4 BI developers, deployed
+          <strong>30+ production dashboards</strong> adopted by C-suite, and built ETL
+          pipelines delivering 99% data accuracy. I led a full Tableau-to-MicroStrategy
+          migration — completed 3 weeks ahead of schedule.
+        </p>
+        <blockquote>
+          What makes me different: I build the dashboard <em>and</em> I can trace a
+          data quality issue back to the pipeline — a rare combination that saves
+          teams weeks of back-and-forth.
+        </blockquote>
+        <p>
+          My core strength is BI &amp; analytics — Power BI (DAX, RLS, drill-through),
+          Tableau, Looker/LookML, and SQL across BigQuery, Snowflake, and SQL Server.
+          My DE background means I can fix what's upstream when the data is wrong.
+        </p>
       </div>
-      <div class="skill-groups reveal">
-        <div class="skill-group">
-          <div class="skill-group-label">BI & Visualization</div>
-          <div class="skill-tags">
-            <span class="tag accent">Power BI</span>
-            <span class="tag accent">DAX</span>
-            <span class="tag accent">Tableau</span>
-            <span class="tag">Looker · LookML</span>
-            <span class="tag">MicroStrategy</span>
-            <span class="tag">RLS · RBAC</span>
-          </div>
+
+      <ol class="timeline">
+        <li>
+          <span class="tl-year">2025</span>
+          <h4>MS Business Analytics — ASU W.P. Carey</h4>
+          <p>4.0 GPA · December 2025 · Advanced analytics, ML, cloud data engineering</p>
+        </li>
+        <li>
+          <span class="tl-year">2021–24</span>
+          <h4>Data Analyst &amp; Team Lead — Onix</h4>
+          <p>Led 4-person BI team · 30+ dashboards · 99% pipeline accuracy · Migration leader</p>
+        </li>
+        <li>
+          <span class="tl-year">2020</span>
+          <h4>Tableau Developer Intern — Infonyx</h4>
+          <p>Built dashboards improving revenue forecasting accuracy by 25% for airline client</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="section" id="projects">
+    <div class="section-head">
+      <span class="section-tag">// 02 — projects</span>
+      <h2 class="section-title">Work that <em>ships.</em></h2>
+      <p class="section-sub">BI &amp; analytics work — dashboards, KPI analysis, data modeling, and ML pipelines. All projects include full code and documentation on GitHub.</p>
+    </div>
+
+    <div class="filter-bar" id="filterBar">
+      <button class="filter active" data-filter="all">All</button>
+      <button class="filter" data-filter="bi">BI &amp; Analytics</button>
+      <button class="filter" data-filter="ml">Machine Learning</button>
+      <button class="filter" data-filter="de">Data Engineering</button>
+    </div>
+
+    <div class="project-grid">
+      <article class="project" data-cat="ml bi" data-tilt>
+        <div class="p-head">
+          <span class="p-icon">⚡</span>
+          <span class="p-num">01</span>
         </div>
-        <div class="skill-group">
-          <div class="skill-group-label">Data Warehousing & SQL</div>
-          <div class="skill-tags">
-            <span class="tag accent">Snowflake</span>
-            <span class="tag accent">BigQuery</span>
-            <span class="tag">SQL Server</span>
-            <span class="tag">Star Schema</span>
-            <span class="tag">Dimensional Modeling</span>
-            <span class="tag">Window Functions</span>
-          </div>
+        <h3>Grip Lab AI — Wearable Recovery Algorithm</h3>
+        <p>XGBoost &amp; Random Forest models detecting neuromuscular fatigue missed by standard wearables (Oura, Whoop). Proprietary Asymmetry Indices quantify CNS readiness from grip strength data. Contributing to Utility Patent filing.</p>
+        <div class="p-metrics">
+          <div><b>86.67%</b><span>Accuracy</span></div>
+          <div><b>66.67%</b><span>Days Corrected</span></div>
+          <div><b>Patent</b><span>Pending</span></div>
         </div>
-        <div class="skill-group">
-          <div class="skill-group-label">Data Engineering</div>
-          <div class="skill-tags">
-            <span class="tag">GCP Dataflow</span>
-            <span class="tag">Pub/Sub</span>
-            <span class="tag">Databricks</span>
-            <span class="tag">Azure Data Factory</span>
-            <span class="tag">Airflow</span>
-            <span class="tag">Delta Lake</span>
-          </div>
+        <div class="p-tags"><span>XGBoost</span><span>Python</span><span>Power BI</span><span>Tableau</span></div>
+        <a href="https://github.com/omkarpallerla/Grip-Lab-Wearable-AI" target="_blank" rel="noopener" class="p-link">View on GitHub <span>↗</span></a>
+      </article>
+
+      <article class="project" data-cat="de bi" data-tilt>
+        <div class="p-head">
+          <span class="p-icon">📉</span>
+          <span class="p-num">02</span>
         </div>
-        <div class="skill-group">
-          <div class="skill-group-label">Languages & ML</div>
-          <div class="skill-tags">
-            <span class="tag accent">Python</span>
-            <span class="tag accent">SQL</span>
-            <span class="tag">XGBoost</span>
-            <span class="tag">Scikit-Learn</span>
-            <span class="tag">Pandas · NumPy</span>
-            <span class="tag">DMAIC · UAT</span>
-          </div>
+        <h3>Lean Six Sigma Process Analytics</h3>
+        <p>DMAIC project cutting Gentech's proposal cycle time from 31.6 → 26.9 days. Live Databricks pipeline auto-alerts ops managers on SLA breaches via Tableau dashboard.</p>
+        <div class="p-metrics">
+          <div><b>-15%</b><span>Cycle Time</span></div>
+          <div><b>-83%</b><span>Rework Rate</span></div>
         </div>
+        <div class="p-tags"><span>Databricks</span><span>Tableau</span><span>DMAIC</span><span>Python</span></div>
+        <a href="https://github.com/omkarpallerla/Lean-Six-Sigma-Process-Analytics" target="_blank" rel="noopener" class="p-link">View on GitHub <span>↗</span></a>
+      </article>
+
+      <article class="project" data-cat="ml bi" data-tilt>
+        <div class="p-head">
+          <span class="p-icon">🩺</span>
+          <span class="p-num">03</span>
+        </div>
+        <h3>Diabetes Prediction — 10+ Algorithm Benchmark</h3>
+        <p>XGBoost (0.84 AUC) benchmarked against 10+ ML models on Pima dataset. Scoring pipeline built on Snowflake staging + Python scoring → Power BI patient risk dashboard.</p>
+        <div class="p-metrics">
+          <div><b>0.84</b><span>AUC-ROC</span></div>
+          <div><b>10+</b><span>Models</span></div>
+        </div>
+        <div class="p-tags"><span>XGBoost</span><span>Snowflake</span><span>Power BI</span><span>Python</span></div>
+        <a href="https://github.com/omkarpallerla/Diabetes-Prediction-Ensemble-Modeling" target="_blank" rel="noopener" class="p-link">View on GitHub <span>↗</span></a>
+      </article>
+
+      <article class="project" data-cat="ml de" data-tilt>
+        <div class="p-head">
+          <span class="p-icon">🔍</span>
+          <span class="p-num">04</span>
+        </div>
+        <h3>Yelp Fake Review Detection — NLP</h3>
+        <p>VADER sentiment + XGBoost fraud detection engine achieving 99% F1. Flags fake reviews using asymmetry indices, caps ratio, and TF-IDF features via Databricks pipeline.</p>
+        <div class="p-metrics">
+          <div><b>99%</b><span>F1 Score</span></div>
+          <div><b>2K+</b><span>Reviews</span></div>
+        </div>
+        <div class="p-tags"><span>NLP</span><span>XGBoost</span><span>Databricks</span><span>Python</span></div>
+        <a href="https://github.com/omkarpallerla/Yelp-Fake-Review-Detection-NLP" target="_blank" rel="noopener" class="p-link">View on GitHub <span>↗</span></a>
+      </article>
+
+      <article class="project" data-cat="bi ml" data-tilt>
+        <div class="p-head">
+          <span class="p-icon">🎲</span>
+          <span class="p-num">05</span>
+        </div>
+        <h3>Strategic Investment Risk Analysis</h3>
+        <p>10,000-iteration Monte Carlo simulation for EV capacity planning. Bayesian Decision Trees determine optimal capital allocation. CFO adjusts assumptions live in Power BI scenario dashboard.</p>
+        <div class="p-metrics">
+          <div><b>$883M</b><span>Expected NPV</span></div>
+          <div><b>10K</b><span>Simulations</span></div>
+        </div>
+        <div class="p-tags"><span>Python</span><span>Power BI</span><span>Monte Carlo</span><span>SciPy</span></div>
+        <a href="https://github.com/omkarpallerla/Strategic-Risk-Analysis-Monte-Carlo" target="_blank" rel="noopener" class="p-link">View on GitHub <span>↗</span></a>
+      </article>
+
+      <article class="project" data-cat="bi de" data-tilt>
+        <div class="p-head">
+          <span class="p-icon">⚙️</span>
+          <span class="p-num">06</span>
+        </div>
+        <h3>E-Scoot Network Optimization</h3>
+        <p>MILP facility location model solving depot placement for e-scooter fleet. Saved 19% of infrastructure budget while meeting 100% demand coverage. Results visualized on Power BI Azure Maps.</p>
+        <div class="p-metrics">
+          <div><b>19%</b><span>Budget Saved</span></div>
+          <div><b>100%</b><span>Coverage</span></div>
+        </div>
+        <div class="p-tags"><span>MILP</span><span>Python</span><span>Power BI</span><span>Azure Maps</span></div>
+        <a href="https://github.com/omkarpallerla/E-Scoot-Network-Optimization" target="_blank" rel="noopener" class="p-link">View on GitHub <span>↗</span></a>
+      </article>
+
+      <article class="project" data-cat="ml bi" data-tilt>
+        <div class="p-head">
+          <span class="p-icon">🏥</span>
+          <span class="p-num">07</span>
+        </div>
+        <h3>Obesity Risk Classification</h3>
+        <p>94.2% accuracy Random Forest with SHAP explainability. Risk scores exported to Power BI care coordinator dashboard — Low/Medium/High tiers drive daily patient triage.</p>
+        <div class="p-metrics">
+          <div><b>94.2%</b><span>Accuracy</span></div>
+          <div><b>0.97</b><span>AUC</span></div>
+        </div>
+        <div class="p-tags"><span>Random Forest</span><span>SHAP</span><span>Power BI</span><span>Scikit-Learn</span></div>
+        <a href="https://github.com/omkarpallerla/Obesity-Risk-Classification" target="_blank" rel="noopener" class="p-link">View on GitHub <span>↗</span></a>
+      </article>
+
+      <article class="project" data-cat="ml bi" data-tilt>
+        <div class="p-head">
+          <span class="p-icon">🚗</span>
+          <span class="p-num">08</span>
+        </div>
+        <h3>Used Car Price Prediction</h3>
+        <p>Polynomial Regression (R²=0.93) with VIF diagnostics predicting resale value. Predicted prices feed Power BI inventory dashboard flagging over/underpriced vehicles in real time.</p>
+        <div class="p-metrics">
+          <div><b>0.93</b><span>R² Score</span></div>
+          <div><b>18%</b><span>Diesel Premium</span></div>
+        </div>
+        <div class="p-tags"><span>Regression</span><span>Power BI</span><span>Python</span><span>Statsmodels</span></div>
+        <a href="https://github.com/omkarpallerla/Used-Car-Price-Prediction" target="_blank" rel="noopener" class="p-link">View on GitHub <span>↗</span></a>
+      </article>
+
+      <article class="project" data-cat="bi" data-tilt>
+        <div class="p-head">
+          <span class="p-icon">🎵</span>
+          <span class="p-num">09</span>
+        </div>
+        <h3>Spotify Songs Popularity Analysis</h3>
+        <p>Analyzed 50,000+ tracks to uncover the audio feature fingerprint of hit songs. Danceability + Energy > 0.7 is the formula. Results in a Power BI streaming analytics dashboard for A&amp;R teams.</p>
+        <div class="p-metrics">
+          <div><b>50K+</b><span>Tracks</span></div>
+          <div><b>0.48</b><span>Top Correlation</span></div>
+        </div>
+        <div class="p-tags"><span>Python</span><span>Power BI</span><span>Pandas</span><span>Plotly</span></div>
+        <a href="https://github.com/omkarpallerla/Spotify-Songs-Popularity" target="_blank" rel="noopener" class="p-link">View on GitHub <span>↗</span></a>
+      </article>
+    </div>
+  </section>
+
+  <!-- STACK -->
+  <section class="section" id="stack">
+    <div class="section-head">
+      <span class="section-tag">// 03 — tech stack</span>
+      <h2 class="section-title">BI-first stack. <em>DE when it counts.</em></h2>
+      <p class="section-sub">Core tools I've shipped production work with — not just listed on a resume.</p>
+    </div>
+
+    <div class="constellation" id="constellation">
+      <canvas id="constCanvas"></canvas>
+      <div class="const-legend">
+        <div><span class="dot dot-bi"></span>BI &amp; Viz</div>
+        <div><span class="dot dot-de"></span>Data Engineering</div>
+        <div><span class="dot dot-wh"></span>Warehouses</div>
+        <div><span class="dot dot-ml"></span>Languages &amp; ML</div>
       </div>
     </div>
-  </div>
-</section>
 
-<!-- PROJECTS -->
-<section id="projects">
-  <div class="section-inner">
-    <div class="section-label">// 02 — projects</div>
-    <h2 class="section-title reveal">Work that ships.</h2>
-    <p class="section-desc reveal">BI & analytics work — dashboards, KPI analysis, data modeling, and ML pipelines. All projects include full code and documentation on GitHub.</p>
-    <div class="filter-bar reveal">
-      <button class="filter-btn active" data-filter="all">All Projects</button>
-      <button class="filter-btn" data-filter="bi">BI & Analytics</button>
-      <button class="filter-btn" data-filter="ml">Machine Learning</button>
-      <button class="filter-btn" data-filter="de">Data Engineering</button>
-    </div>
-    <div class="projects-grid">
-
-      <div class="project-card featured reveal" data-cat="ml">
-        <div class="card-accent"></div>
-        <div class="card-body">
-          <div class="card-icon">⚡</div>
-          <div class="card-title">Grip Lab AI — Wearable Recovery Algorithm</div>
-          <div class="card-desc">XGBoost & Random Forest models detecting neuromuscular fatigue missed by standard wearables (Oura, Whoop). Proprietary Asymmetry Indices quantify CNS readiness from grip strength data. Contributing to Utility Patent filing.</div>
-          <div class="card-stats">
-            <div class="cstat"><div class="cstat-num">86.67%</div><div class="cstat-label">Accuracy</div></div>
-            <div class="cstat"><div class="cstat-num">66.67%</div><div class="cstat-label">Days Corrected</div></div>
-            <div class="cstat"><div class="cstat-num">Patent</div><div class="cstat-label">Pending</div></div>
-          </div>
-          <div class="card-tags">
-            <span class="card-tag">XGBoost</span>
-            <span class="card-tag">Python</span>
-            <span class="card-tag">Power BI</span>
-            <span class="card-tag">Tableau</span>
-            <span class="card-tag">Feature Engineering</span>
-          </div>
-          <a href="https://github.com/omkarpallerla/Grip-Lab-Wearable-AI" target="_blank" class="card-link">View on GitHub</a>
-        </div>
+    <div class="stack-grid">
+      <div class="stack-col">
+        <h4>BI &amp; Visualization</h4>
+        <ul><li>Power BI · DAX · RLS</li><li>Tableau</li><li>Looker · LookML</li><li>MicroStrategy</li><li>Power Query M</li></ul>
       </div>
-
-      <div class="project-card reveal" data-cat="de">
-        <div class="card-accent"></div>
-        <div class="card-body">
-          <div class="card-icon">📉</div>
-          <div class="card-title">Lean Six Sigma Process Analytics</div>
-          <div class="card-desc">DMAIC project cutting Gentech's proposal cycle time from 31.6 → 26.9 days. Live Databricks pipeline auto-alerts ops managers on SLA breaches via Tableau dashboard.</div>
-          <div class="card-stats">
-            <div class="cstat"><div class="cstat-num">-15%</div><div class="cstat-label">Cycle Time</div></div>
-            <div class="cstat"><div class="cstat-num">-83%</div><div class="cstat-label">Rework Rate</div></div>
-          </div>
-          <div class="card-tags">
-            <span class="card-tag">Databricks</span>
-            <span class="card-tag">Tableau</span>
-            <span class="card-tag">DMAIC</span>
-            <span class="card-tag">Python</span>
-          </div>
-          <a href="https://github.com/omkarpallerla/Lean-Six-Sigma-Process-Analytics" target="_blank" class="card-link">View on GitHub</a>
-        </div>
+      <div class="stack-col">
+        <h4>Data Engineering</h4>
+        <ul><li>GCP Dataflow · Apache Beam</li><li>Pub/Sub · Event Streaming</li><li>Databricks · Delta Lake</li><li>Azure Data Factory</li><li>Cloud Composer · Airflow</li></ul>
       </div>
-
-      <div class="project-card reveal" data-cat="ml">
-        <div class="card-accent"></div>
-        <div class="card-body">
-          <div class="card-icon">🩺</div>
-          <div class="card-title">Diabetes Prediction — 10+ Algorithm Benchmark</div>
-          <div class="card-desc">XGBoost (0.84 AUC) benchmarked against 10+ ML models on Pima dataset. Scoring pipeline built on Snowflake staging + Python scoring → Power BI patient risk dashboard.</div>
-          <div class="card-stats">
-            <div class="cstat"><div class="cstat-num">0.84</div><div class="cstat-label">AUC-ROC</div></div>
-            <div class="cstat"><div class="cstat-num">10+</div><div class="cstat-label">Models</div></div>
-          </div>
-          <div class="card-tags">
-            <span class="card-tag">XGBoost</span>
-            <span class="card-tag">Snowflake</span>
-            <span class="card-tag">Power BI</span>
-            <span class="card-tag">Python</span>
-          </div>
-          <a href="https://github.com/omkarpallerla/Diabetes-Prediction-Ensemble-Modeling" target="_blank" class="card-link">View on GitHub</a>
-        </div>
+      <div class="stack-col">
+        <h4>Cloud &amp; Warehouses</h4>
+        <ul><li>Snowflake</li><li>BigQuery</li><li>GCP · Azure · Databricks</li><li>SQL Server · PostgreSQL</li><li>Star Schema · Dim Modeling</li></ul>
       </div>
-
-      <div class="project-card reveal" data-cat="ml">
-        <div class="card-accent"></div>
-        <div class="card-body">
-          <div class="card-icon">🔍</div>
-          <div class="card-title">Yelp Fake Review Detection — NLP</div>
-          <div class="card-desc">VADER sentiment + XGBoost fraud detection engine achieving 99% F1. Flags fake reviews using asymmetry indices, caps ratio, and TF-IDF features via Databricks pipeline.</div>
-          <div class="card-stats">
-            <div class="cstat"><div class="cstat-num">99%</div><div class="cstat-label">F1 Score</div></div>
-            <div class="cstat"><div class="cstat-num">2K+</div><div class="cstat-label">Reviews Scored</div></div>
-          </div>
-          <div class="card-tags">
-            <span class="card-tag">NLP</span>
-            <span class="card-tag">XGBoost</span>
-            <span class="card-tag">Databricks</span>
-            <span class="card-tag">Python</span>
-          </div>
-          <a href="https://github.com/omkarpallerla/Yelp-Fake-Review-Detection-NLP" target="_blank" class="card-link">View on GitHub</a>
-        </div>
-      </div>
-
-      <div class="project-card reveal" data-cat="bi">
-        <div class="card-accent"></div>
-        <div class="card-body">
-          <div class="card-icon">🎲</div>
-          <div class="card-title">Strategic Investment Risk Analysis</div>
-          <div class="card-desc">10,000-iteration Monte Carlo simulation for EV capacity planning. Bayesian Decision Trees determine optimal capital allocation. CFO adjusts assumptions live in Power BI scenario dashboard.</div>
-          <div class="card-stats">
-            <div class="cstat"><div class="cstat-num">$883M</div><div class="cstat-label">Expected NPV</div></div>
-            <div class="cstat"><div class="cstat-num">10K</div><div class="cstat-label">Simulations</div></div>
-          </div>
-          <div class="card-tags">
-            <span class="card-tag">Python</span>
-            <span class="card-tag">Power BI</span>
-            <span class="card-tag">Monte Carlo</span>
-            <span class="card-tag">SciPy</span>
-          </div>
-          <a href="https://github.com/omkarpallerla/Strategic-Risk-Analysis-Monte-Carlo" target="_blank" class="card-link">View on GitHub</a>
-        </div>
-      </div>
-
-      <div class="project-card reveal" data-cat="de">
-        <div class="card-accent"></div>
-        <div class="card-body">
-          <div class="card-icon">⚙️</div>
-          <div class="card-title">E-Scoot Network Optimization</div>
-          <div class="card-desc">MILP facility location model solving depot placement for e-scooter fleet. Saved 19% of infrastructure budget while meeting 100% demand coverage. Results visualized on Power BI Azure Maps.</div>
-          <div class="card-stats">
-            <div class="cstat"><div class="cstat-num">19%</div><div class="cstat-label">Budget Saved</div></div>
-            <div class="cstat"><div class="cstat-num">100%</div><div class="cstat-label">Coverage</div></div>
-          </div>
-          <div class="card-tags">
-            <span class="card-tag">MILP</span>
-            <span class="card-tag">Python</span>
-            <span class="card-tag">Power BI</span>
-            <span class="card-tag">Azure Maps</span>
-          </div>
-          <a href="https://github.com/omkarpallerla/E-Scoot-Network-Optimization" target="_blank" class="card-link">View on GitHub</a>
-        </div>
-      </div>
-
-      <div class="project-card reveal" data-cat="ml">
-        <div class="card-accent"></div>
-        <div class="card-body">
-          <div class="card-icon">🏥</div>
-          <div class="card-title">Obesity Risk Classification</div>
-          <div class="card-desc">94.2% accuracy Random Forest with SHAP explainability. Risk scores exported to Power BI care coordinator dashboard — Low/Medium/High tiers drive daily patient triage.</div>
-          <div class="card-stats">
-            <div class="cstat"><div class="cstat-num">94.2%</div><div class="cstat-label">Accuracy</div></div>
-            <div class="cstat"><div class="cstat-num">0.97</div><div class="cstat-label">AUC</div></div>
-          </div>
-          <div class="card-tags">
-            <span class="card-tag">Random Forest</span>
-            <span class="card-tag">SHAP</span>
-            <span class="card-tag">Power BI</span>
-            <span class="card-tag">Scikit-Learn</span>
-          </div>
-          <a href="https://github.com/omkarpallerla/Obesity-Risk-Classification" target="_blank" class="card-link">View on GitHub</a>
-        </div>
-      </div>
-
-      <div class="project-card reveal" data-cat="bi">
-        <div class="card-accent"></div>
-        <div class="card-body">
-          <div class="card-icon">🚗</div>
-          <div class="card-title">Used Car Price Prediction</div>
-          <div class="card-desc">Polynomial Regression (R²=0.93) with VIF diagnostics predicting resale value. Predicted prices feed Power BI inventory dashboard flagging over/underpriced vehicles in real time.</div>
-          <div class="card-stats">
-            <div class="cstat"><div class="cstat-num">0.93</div><div class="cstat-label">R² Score</div></div>
-            <div class="cstat"><div class="cstat-num">18%</div><div class="cstat-label">Diesel Premium</div></div>
-          </div>
-          <div class="card-tags">
-            <span class="card-tag">Regression</span>
-            <span class="card-tag">Power BI</span>
-            <span class="card-tag">Python</span>
-            <span class="card-tag">Statsmodels</span>
-          </div>
-          <a href="https://github.com/omkarpallerla/Used-Car-Price-Prediction" target="_blank" class="card-link">View on GitHub</a>
-        </div>
-      </div>
-
-      <div class="project-card reveal" data-cat="bi">
-        <div class="card-accent"></div>
-        <div class="card-body">
-          <div class="card-icon">🎵</div>
-          <div class="card-title">Spotify Songs Popularity Analysis</div>
-          <div class="card-desc">Analyzed 50,000+ tracks to uncover the audio feature fingerprint of hit songs. Danceability + Energy > 0.7 is the formula. Results in a Power BI streaming analytics dashboard for A&R teams.</div>
-          <div class="card-stats">
-            <div class="cstat"><div class="cstat-num">50K+</div><div class="cstat-label">Tracks</div></div>
-            <div class="cstat"><div class="cstat-num">0.48</div><div class="cstat-label">Top Correlation</div></div>
-          </div>
-          <div class="card-tags">
-            <span class="card-tag">Python</span>
-            <span class="card-tag">Power BI</span>
-            <span class="card-tag">Pandas</span>
-            <span class="card-tag">Plotly</span>
-          </div>
-          <a href="https://github.com/omkarpallerla/Spotify-Songs-Popularity" target="_blank" class="card-link">View on GitHub</a>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- STACK -->
-<section id="stack">
-  <div class="section-inner">
-    <div class="section-label">// 03 — tech stack</div>
-    <h2 class="section-title reveal">BI-first stack.<br/>DE when it counts.</h2>
-    <p class="section-desc reveal">Core tools I've shipped production work with — not just listed on a resume.</p>
-    <div class="stack-grid reveal">
-      <div class="stack-group">
-        <div class="stack-group-title">BI & Visualization</div>
-        <div class="stack-item"><span class="stack-dot"></span>Power BI · DAX · RLS</div>
-        <div class="stack-item"><span class="stack-dot"></span>Tableau</div>
-        <div class="stack-item"><span class="stack-dot"></span>Looker · LookML</div>
-        <div class="stack-item"><span class="stack-dot"></span>MicroStrategy</div>
-        <div class="stack-item"><span class="stack-dot"></span>Power Query M</div>
-      </div>
-      <div class="stack-group">
-        <div class="stack-group-title">Data Engineering</div>
-        <div class="stack-item"><span class="stack-dot"></span>GCP Dataflow · Apache Beam</div>
-        <div class="stack-item"><span class="stack-dot"></span>Pub/Sub · Event Streaming</div>
-        <div class="stack-item"><span class="stack-dot"></span>Databricks · Delta Lake</div>
-        <div class="stack-item"><span class="stack-dot"></span>Azure Data Factory</div>
-        <div class="stack-item"><span class="stack-dot"></span>Cloud Composer · Airflow</div>
-      </div>
-      <div class="stack-group">
-        <div class="stack-group-title">Cloud & Warehouses</div>
-        <div class="stack-item"><span class="stack-dot"></span>Snowflake</div>
-        <div class="stack-item"><span class="stack-dot"></span>BigQuery</div>
-        <div class="stack-item"><span class="stack-dot"></span>GCP · Azure · Databricks</div>
-        <div class="stack-item"><span class="stack-dot"></span>SQL Server · PostgreSQL</div>
-        <div class="stack-item"><span class="stack-dot"></span>Star Schema · Dim Modeling</div>
-      </div>
-      <div class="stack-group">
-        <div class="stack-group-title">Languages & Methods</div>
-        <div class="stack-item"><span class="stack-dot"></span>SQL · CTEs · Window Fns</div>
-        <div class="stack-item"><span class="stack-dot"></span>Python · Pandas · NumPy</div>
-        <div class="stack-item"><span class="stack-dot"></span>XGBoost · Scikit-Learn</div>
-        <div class="stack-item"><span class="stack-dot"></span>Agile · DMAIC · UAT</div>
-        <div class="stack-item"><span class="stack-dot"></span>BRD · Requirements Gathering</div>
+      <div class="stack-col">
+        <h4>Languages &amp; Methods</h4>
+        <ul><li>SQL · CTEs · Window Fns</li><li>Python · Pandas · NumPy</li><li>XGBoost · Scikit-Learn</li><li>Agile · DMAIC · UAT</li><li>BRD · Requirements</li></ul>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- CERTIFICATIONS -->
-<section id="certifications">
-  <div class="section-inner">
-    <div class="section-label">// 04 — certifications</div>
-    <h2 class="section-title reveal">Certified across<br/>the cloud data stack.</h2>
-    <div class="certs-grid reveal">
-      <div class="cert-card">
-        <div class="cert-badge azure">🔷</div>
-        <div class="cert-name">Azure Data Engineer Associate</div>
-        <div class="cert-issuer">Microsoft · DP-203</div>
-        <div class="cert-pill">✓ Certified</div>
+  <!-- CERTS -->
+  <section class="section" id="certs">
+    <div class="section-head">
+      <span class="section-tag">// 04 — certifications</span>
+      <h2 class="section-title">Certified across the <em>cloud data stack.</em></h2>
+    </div>
+
+    <div class="cert-grid">
+      <div class="cert" data-tilt>
+        <div class="cert-badge cert-azure">Az</div>
+        <h4>Azure Data Engineer Associate</h4>
+        <p class="mono">Microsoft · DP-203</p>
+        <span class="cert-ok">✓ Certified</span>
       </div>
-      <div class="cert-card">
-        <div class="cert-badge databricks">🔶</div>
-        <div class="cert-name">Databricks Data Engineer Associate</div>
-        <div class="cert-issuer">Databricks</div>
-        <div class="cert-pill">✓ Certified</div>
+      <div class="cert" data-tilt>
+        <div class="cert-badge cert-db">Db</div>
+        <h4>Databricks Data Engineer Associate</h4>
+        <p class="mono">Databricks</p>
+        <span class="cert-ok">✓ Certified</span>
       </div>
-      <div class="cert-card">
-        <div class="cert-badge gcp">🌐</div>
-        <div class="cert-name">Associate Cloud Engineer</div>
-        <div class="cert-issuer">Google Cloud · GCP</div>
-        <div class="cert-pill">✓ Certified</div>
+      <div class="cert" data-tilt>
+        <div class="cert-badge cert-gcp">Gc</div>
+        <h4>Associate Cloud Engineer</h4>
+        <p class="mono">Google Cloud · GCP</p>
+        <span class="cert-ok">✓ Certified</span>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- CONTACT -->
-<section id="contact">
-  <div class="section-inner">
-    <div class="section-label">// 05 — contact</div>
+  <!-- CONTACT -->
+  <section class="section section-contact" id="contact">
+    <div class="section-head">
+      <span class="section-tag">// 05 — contact</span>
+      <div class="status-pill"><span class="status-dot"></span>Open to Work · F-1 OPT Active</div>
+      <h2 class="section-title">Let's build <em>something together.</em></h2>
+      <p class="section-sub">
+        Actively looking for <strong>BI Analyst, BI Developer, Analytics Engineer, and Data Analyst</strong> roles across the US.
+        Based in Phoenix, AZ — open to relocation. F-1 OPT active · STEM OPT eligible through ~Feb 2029.
+      </p>
+    </div>
+
     <div class="contact-grid">
-      <div class="contact-left reveal">
-        <div class="availability-badge">Open to Work · F-1 OPT Active</div>
-        <h2 class="section-title">Let's build<br/>something together.</h2>
-        <p>Actively looking for <strong style="color:rgba(255,255,255,0.85)">BI Analyst, BI Developer, Analytics Engineer, and Data Analyst</strong> roles across the US. Based in Phoenix, AZ — open to relocation.</p>
-        <div class="visa-note">
-          F-1 OPT active · STEM OPT extension eligible through ~February 2029<br/>
-          Work authorized · No sponsorship required now
-        </div>
-      </div>
-      <div class="contact-links reveal">
-        <a href="mailto:omkar.m.pallerla@gmail.com" class="contact-link">
-          <div class="contact-link-icon">📧</div>
-          <div class="contact-link-text">
-            <div class="contact-link-label">Email</div>
-            <div class="contact-link-value">omkar.m.pallerla@gmail.com</div>
-          </div>
-        </a>
-        <a href="https://linkedin.com/in/omkar-pallerla" target="_blank" class="contact-link">
-          <div class="contact-link-icon">💼</div>
-          <div class="contact-link-text">
-            <div class="contact-link-label">LinkedIn</div>
-            <div class="contact-link-value">linkedin.com/in/omkar-pallerla</div>
-          </div>
-        </a>
-        <a href="https://github.com/omkarpallerla" target="_blank" class="contact-link">
-          <div class="contact-link-icon">🐙</div>
-          <div class="contact-link-text">
-            <div class="contact-link-label">GitHub</div>
-            <div class="contact-link-value">github.com/omkarpallerla</div>
-          </div>
-        </a>
-        <a href="#" class="contact-link">
-          <div class="contact-link-icon">📍</div>
-          <div class="contact-link-text">
-            <div class="contact-link-label">Location</div>
-            <div class="contact-link-value">Phoenix, AZ — open to relocation</div>
-          </div>
-        </a>
+      <a class="contact-card" href="mailto:omkar.m.pallerla@gmail.com">
+        <span class="c-label mono">Email</span>
+        <span class="c-val">omkar.m.pallerla@gmail.com</span>
+        <span class="c-arrow">↗</span>
+      </a>
+      <a class="contact-card" href="https://linkedin.com/in/omkar-pallerla" target="_blank" rel="noopener">
+        <span class="c-label mono">LinkedIn</span>
+        <span class="c-val">linkedin.com/in/omkar-pallerla</span>
+        <span class="c-arrow">↗</span>
+      </a>
+      <a class="contact-card" href="https://github.com/omkarpallerla" target="_blank" rel="noopener">
+        <span class="c-label mono">GitHub</span>
+        <span class="c-val">github.com/omkarpallerla</span>
+        <span class="c-arrow">↗</span>
+      </a>
+      <div class="contact-card contact-loc">
+        <span class="c-label mono">Location</span>
+        <span class="c-val">Phoenix, AZ</span>
+        <span class="c-arrow">open to relocation</span>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- FOOTER -->
-<footer>
-  <div class="footer-text">© 2026 · Omkar Pallerla · BI Developer & Data Analyst</div>
-  <div class="footer-text">MS Business Analytics, ASU · Azure | Databricks | GCP</div>
-</footer>
+  <footer class="footer">
+    <div>© 2026 · Omkar Pallerla · <span class="mono">BI Developer & Data Analyst</span></div>
+    <div class="mono">MS Business Analytics, ASU · Azure | Databricks | GCP</div>
+  </footer>
 
-<script>
-// Cursor
-const cur = document.getElementById('cur');
-const ring = document.getElementById('cur-ring');
-let mx=0,my=0,rx=0,ry=0;
-document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
-(function animCursor(){
-  cur.style.left=mx+'px'; cur.style.top=my+'px';
-  rx+=(mx-rx)*.1; ry+=(my-ry)*.1;
-  ring.style.left=rx+'px'; ring.style.top=ry+'px';
-  requestAnimationFrame(animCursor);
-})();
-
-// Nav scroll
-const nav=document.getElementById('nav');
-window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>50));
-
-// Reveal
-const reveals=document.querySelectorAll('.reveal');
-new IntersectionObserver((entries)=>{
-  entries.forEach((e,i)=>{
-    if(e.isIntersecting) setTimeout(()=>e.target.classList.add('visible'),i*80);
-  });
-},{threshold:0.08,rootMargin:'0px 0px -40px 0px'}).observe||
-reveals.forEach(el=>new IntersectionObserver((entries)=>{
-  entries.forEach((e,i)=>{if(e.isIntersecting)setTimeout(()=>e.target.classList.add('visible'),i*80);});
-},{threshold:0.08}).observe(el));
-
-// Better reveal
-const obs=new IntersectionObserver((entries)=>{
-  entries.forEach((entry,i)=>{
-    if(entry.isIntersecting){
-      setTimeout(()=>entry.target.classList.add('visible'),i*70);
-    }
-  });
-},{threshold:0.08,rootMargin:'0px 0px -40px 0px'});
-reveals.forEach(el=>obs.observe(el));
-
-// Project filter
-document.querySelectorAll('.filter-btn').forEach(btn=>{
-  btn.addEventListener('click',()=>{
-    document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
-    btn.classList.add('active');
-    const f=btn.dataset.filter;
-    document.querySelectorAll('.project-card').forEach(card=>{
-      const show=f==='all'||card.dataset.cat===f;
-      card.style.opacity=show?'1':'0.2';
-      card.style.transform=show?'':'scale(0.97)';
-      card.style.pointerEvents=show?'':'none';
-    });
-  });
-});
-</script>
+  <script src="js/main.js"></script>
 </body>
 </html>
