@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Omkar Pallerla · BI Developer &amp; Data Analyst</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #0b0c0f; --bg-2: #101218; --bg-3: #14161d;
+    --fg: #eceef2; --fg-dim: #9aa0ab; --fg-mute: #5a6070;
+    --line: rgba(236,238,242,0.10); --line-strong: rgba(236,238,242,0.22);
+    --accent: #ff8554; --accent-2: #7fd8ff; --accent-3: #c8ff7a;
+    --serif: 'Instrument Serif', serif;
+    --sans: 'Geist', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    --mono: 'JetBrains Mono', ui-monospace, monospace;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--fg); font-family: var(--sans); font-size: 15px; line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  a { color: inherit; text-decoration: none; }
+  .grain { position: fixed; inset: 0; z-index: 100; pointer-events: none; opacity: 0.05; mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"); }
+  .progress { position: fixed; top: 0; left: 0; height: 2px; width: 0%; background: var(--accent); z-index: 200; transition: width 0.1s linear; }
+
+  .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 90; display: flex; align-items: center; justify-content: space-between; padding: 16px 36px; background: rgba(11,12,15,0.78); backdrop-filter: blur(18px); border-bottom: 1px solid var(--line); }
+  .brand { display: flex; align-items: center; gap: 12px; font-weight: 500; }
+  .brand-mark { width: 30px; height: 30px; border: 1px solid var(--line-strong); border-radius: 4px; display: grid; place-items: center; font-family: var(--mono); font-size: 11px; color: var(--accent); background: rgba(255,133,84,0.06); }
+  .brand-name { font-size: 14px; }
+  .brand-sub { font-family: var(--mono); font-size: 10px; color: var(--fg-mute); letter-spacing: 0.06em; text-transform: uppercase; margin-left: 8px; }
+  .nav-links { display: flex; gap: 4px; list-style: none; }
+  .nav-links a { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--fg-dim); padding: 8px 14px; border-radius: 3px; transition: all 0.2s; position: relative; }
+  .nav-links a:hover { color: var(--fg); background: rgba(255,255,255,0.04); }
+  .nav-links a.active { color: var(--accent); }
+  .nav-links a.active::before { content: ''; position: absolute; bottom: 0; left: 14px; right: 14px; height: 1px; background: var(--accent); }
+  .nav-cta { display: flex; align-items: center; gap: 8px; }
+  .btn { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; padding: 9px 14px; border: 1px solid var(--line-strong); color: var(--fg-dim); border-radius: 3px; transition: all 0.2s; cursor: pointer; background: rgba(255,255,255,0.02); display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; }
+  .btn:hover { color: var(--fg); border-color: var(--fg-dim); }
+  .btn.primary { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+  .btn.primary:hover { background: #ffa078; border-color: #ffa078; color: var(--bg); }
+  .btn.ghost { background: none; }
+
+  .hero { position: relative; min-height: 100vh; padding: 120px 48px 80px; display: flex; flex-direction: column; justify-content: center; overflow: hidden; background: radial-gradient(ellipse at 70% 30%, rgba(255,133,84,0.08) 0%, transparent 50%), radial-gradient(ellipse at 20% 70%, rgba(127,216,255,0.05) 0%, transparent 50%), var(--bg); }
+  #heroCanvas { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1; opacity: 0.9; }
+  .hero-content { position: relative; z-index: 2; max-width: 1200px; margin: 0 auto; width: 100%; }
+  .status-pill { display: inline-flex; align-items: center; gap: 10px; padding: 6px 14px; border: 1px solid var(--line-strong); border-radius: 999px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--fg-dim); margin-bottom: 28px; background: rgba(11,12,15,0.6); backdrop-filter: blur(8px); }
+  .live-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent-3); box-shadow: 0 0 8px var(--accent-3); animation: pulse 2.4s ease-in-out infinite; }
+  @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.35; } }
+  .hero h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(48px, 8vw, 110px); line-height: 0.98; letter-spacing: -0.025em; margin-bottom: 28px; max-width: 1000px; }
+  .hero h1 em { font-style: italic; color: var(--accent); }
+  .hero .subline { font-size: 18px; color: var(--fg-dim); max-width: 620px; line-height: 1.55; margin-bottom: 36px; }
+  .hero .subline strong { color: var(--fg); font-weight: 500; }
+  .hero-ctas { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 60px; }
+  .hero-ctas .btn { padding: 13px 22px; font-size: 12px; }
+  .hero-stats { display: grid; grid-template-columns: repeat(5, 1fr); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); max-width: 900px; }
+  .hero-stats .stat { padding: 22px 16px; border-right: 1px solid var(--line); }
+  .hero-stats .stat:last-child { border-right: none; }
+  .hero-stats b { display: block; font-family: var(--serif); font-size: 32px; font-weight: 400; letter-spacing: -0.02em; }
+  .hero-stats span { font-family: var(--mono); font-size: 10px; color: var(--fg-mute); letter-spacing: 0.08em; text-transform: uppercase; }
+  .scroll-hint { position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); font-family: var(--mono); font-size: 10px; color: var(--fg-mute); letter-spacing: 0.14em; text-transform: uppercase; display: flex; flex-direction: column; align-items: center; gap: 10px; z-index: 2; }
+  .scroll-line { width: 1px; height: 32px; background: linear-gradient(to bottom, var(--fg-mute), transparent); animation: drop 1.8s ease-in-out infinite; }
+  @keyframes drop { 0%,100% { opacity: 0.3; transform: translateY(-4px); } 50% { opacity: 1; transform: translateY(4px); } }
+
+  section.sec { padding: 120px 48px; max-width: 1280px; margin: 0 auto; scroll-margin-top: 80px; }
+  .sec-head { margin-bottom: 60px; }
+  .sec-tag { font-family: var(--mono); font-size: 11px; color: var(--accent); letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 14px; }
+  .sec h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(36px, 5vw, 64px); line-height: 1.05; letter-spacing: -0.02em; max-width: 900px; }
+  .sec h2 em { color: var(--accent); font-style: italic; }
+  .sec-sub { color: var(--fg-dim); font-size: 16px; max-width: 640px; margin-top: 18px; line-height: 1.6; }
+
+  .about { display: grid; grid-template-columns: 1.3fr 1fr; gap: 80px; align-items: start; }
+  .about p { color: var(--fg-dim); margin-bottom: 18px; font-size: 16px; line-height: 1.7; }
+  .about strong { color: var(--fg); font-weight: 500; }
+  .about blockquote { font-family: var(--serif); font-size: 24px; line-height: 1.35; color: var(--fg); border-left: 2px solid var(--accent); padding: 4px 0 4px 22px; margin: 26px 0; font-style: italic; }
+  .timeline { list-style: none; display: flex; flex-direction: column; gap: 26px; border-left: 1px solid var(--line); padding-left: 28px; }
+  .timeline li { position: relative; }
+  .timeline li::before { content: ''; position: absolute; left: -34px; top: 8px; width: 10px; height: 10px; border: 1px solid var(--accent); background: var(--bg); border-radius: 50%; }
+  .timeline .tl-year { font-family: var(--mono); font-size: 11px; color: var(--accent); letter-spacing: 0.1em; }
+  .timeline h4 { font-size: 16px; margin: 4px 0 4px; font-weight: 500; }
+  .timeline p { font-size: 13px; color: var(--fg-mute); margin: 0; }
+
+  .exp-list { display: flex; flex-direction: column; }
+  .exp-item { display: grid; grid-template-columns: 160px 1fr auto; gap: 40px; padding: 32px 0; border-top: 1px solid var(--line); transition: background 0.25s; }
+  .exp-item:last-child { border-bottom: 1px solid var(--line); }
+  .exp-item:hover { background: rgba(255,255,255,0.015); }
+  .exp-year { font-family: var(--mono); font-size: 12px; color: var(--accent); letter-spacing: 0.08em; padding-top: 4px; }
+  .exp-role h4 { font-family: var(--serif); font-size: 26px; font-weight: 400; line-height: 1.2; margin-bottom: 6px; }
+  .exp-role .co { font-family: var(--mono); font-size: 11px; color: var(--fg-dim); letter-spacing: 0.06em; margin-bottom: 14px; }
+  .exp-role ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .exp-role li { font-size: 14px; color: var(--fg-dim); line-height: 1.55; padding-left: 18px; position: relative; }
+  .exp-role li::before { content: '—'; position: absolute; left: 0; color: var(--accent); }
+  .exp-tags { display: flex; flex-wrap: wrap; gap: 6px; align-content: flex-start; max-width: 220px; justify-content: flex-end; }
+  .exp-tags span { font-family: var(--mono); font-size: 10px; padding: 4px 8px; border: 1px solid var(--line); color: var(--fg-mute); }
+  .linkedin-cta { display: inline-flex; align-items: center; gap: 10px; padding: 12px 22px; border: 1px solid var(--accent); color: var(--accent); font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; margin-top: 36px; transition: all 0.2s; border-radius: 3px; }
+  .linkedin-cta:hover { background: var(--accent); color: var(--bg); }
+
+  .filter-bar { display: flex; gap: 8px; margin-bottom: 32px; flex-wrap: wrap; }
+  .filter { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; padding: 8px 14px; border: 1px solid var(--line); color: var(--fg-dim); background: none; border-radius: 3px; cursor: pointer; transition: all 0.2s; }
+  .filter:hover { color: var(--fg); border-color: var(--fg-dim); }
+  .filter.active { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+  .project-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .project { position: relative; padding: 28px; background: var(--bg-2); border: 1px solid var(--line); display: flex; flex-direction: column; transition: all 0.35s cubic-bezier(.2,.8,.2,1); min-height: 360px; overflow: hidden; }
+  .project::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(135deg, transparent 40%, var(--p-glow, rgba(255,133,84,0)) 100%); opacity: 0; transition: opacity 0.35s; }
+  .project:hover { transform: translateY(-4px); border-color: var(--line-strong); background: var(--bg-3); }
+  .project:hover::before { opacity: 1; }
+  .project[data-primary="bi"] { --p-glow: rgba(255,133,84,0.08); }
+  .project[data-primary="ml"] { --p-glow: rgba(127,216,255,0.08); }
+  .project[data-primary="de"] { --p-glow: rgba(200,255,122,0.08); }
+  .p-head { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; }
+  .p-num { font-family: var(--mono); font-size: 10px; color: var(--fg-mute); letter-spacing: 0.12em; }
+  .p-cat { font-family: var(--mono); font-size: 9px; padding: 3px 7px; border: 1px solid; letter-spacing: 0.1em; text-transform: uppercase; }
+  .p-cat.bi { color: var(--accent); border-color: rgba(255,133,84,0.35); }
+  .p-cat.ml { color: var(--accent-2); border-color: rgba(127,216,255,0.35); }
+  .p-cat.de { color: var(--accent-3); border-color: rgba(200,255,122,0.35); }
+  .project h3 { font-family: var(--serif); font-size: 24px; font-weight: 400; line-height: 1.15; margin-bottom: 12px; letter-spacing: -0.01em; }
+  .project .p-desc { color: var(--fg-dim); font-size: 13.5px; line-height: 1.55; margin-bottom: 20px; flex: 1; }
+  .p-metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); margin-bottom: 16px; border: 1px solid var(--line); }
+  .p-metrics div { background: var(--bg-2); padding: 12px 10px; }
+  .p-metrics b { display: block; font-family: var(--serif); font-size: 20px; font-weight: 400; margin-bottom: 2px; letter-spacing: -0.01em; }
+  .p-metrics span { font-family: var(--mono); font-size: 9px; color: var(--fg-mute); letter-spacing: 0.06em; text-transform: uppercase; }
+  .p-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 16px; }
+  .p-tags span { font-family: var(--mono); font-size: 10px; padding: 3px 7px; border: 1px solid var(--line); color: var(--fg-dim); }
+  .p-link { font-family: var(--mono); font-size: 11px; color: var(--fg-dim); letter-spacing: 0.08em; text-transform: uppercase; padding-top: 14px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; transition: color 0.2s; }
+  .project:hover .p-link { color: var(--accent); }
+
+  .stack-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 36px; }
+  .stack-col h4 { font-family: var(--mono); font-size: 11px; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid var(--line); }
+  .stack-col ul { list-style: none; }
+  .stack-col li { padding: 8px 0; color: var(--fg-dim); font-size: 14px; border-bottom: 1px dashed var(--line); }
+
+  .certs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .cert { padding: 28px; border: 1px solid var(--line); background: var(--bg-2); display: flex; flex-direction: column; gap: 10px; transition: all 0.3s; }
+  .cert:hover { border-color: var(--accent); transform: translateY(-3px); }
+  .cert-logo { width: 64px; height: 64px; display: grid; place-items: center; background: #fff; border-radius: 8px; margin-bottom: 10px; padding: 10px; }
+  .cert-logo img { max-width: 100%; max-height: 100%; object-fit: contain; }
+  .cert h4 { font-size: 15px; font-weight: 500; }
+  .cert .c-meta { font-family: var(--mono); font-size: 11px; color: var(--fg-mute); }
+  .cert .ok { font-family: var(--mono); font-size: 10px; color: var(--accent-3); letter-spacing: 0.1em; margin-top: 6px; }
+
+  .contact-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); max-width: 1000px; }
+  .contact-card { background: var(--bg); padding: 32px 28px; display: flex; flex-direction: column; gap: 6px; transition: background 0.25s; }
+  .contact-card:hover { background: var(--bg-2); }
+  .contact-card .c-label { font-family: var(--mono); font-size: 10px; color: var(--fg-mute); letter-spacing: 0.12em; text-transform: uppercase; }
+  .contact-card .c-val { font-family: var(--serif); font-size: 26px; line-height: 1.1; }
+  .contact-card .c-meta { font-family: var(--mono); font-size: 10px; color: var(--fg-mute); margin-top: 6px; }
+
+  footer { padding: 32px 48px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; font-family: var(--mono); font-size: 10px; color: var(--fg-mute); letter-spacing: 0.08em; text-transform: uppercase; flex-wrap: wrap; gap: 12px; }
+
+  .modal-overlay { position: fixed; inset: 0; z-index: 300; background: rgba(6,7,10,0.78); backdrop-filter: blur(10px); opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+  .modal-overlay.open { opacity: 1; pointer-events: auto; }
+  .tldr { position: fixed; top: 50%; left: 50%; transform: translate(-50%,-50%) scale(0.96); width: min(920px, 94vw); max-height: 94vh; overflow: hidden; background: var(--bg); border: 1px solid var(--line-strong); padding: 28px 36px 24px; z-index: 310; opacity: 0; pointer-events: none; transition: opacity 0.3s, transform 0.3s; border-radius: 2px; }
+  .tldr.open { opacity: 1; pointer-events: auto; transform: translate(-50%,-50%) scale(1); }
+  .tldr-close { position: absolute; top: 16px; right: 16px; width: 34px; height: 34px; border: 1px solid var(--line-strong); border-radius: 50%; background: none; color: var(--fg-dim); cursor: pointer; font-family: var(--mono); font-size: 16px; display: grid; place-items: center; transition: all 0.2s; }
+  .tldr-close:hover { color: var(--accent); border-color: var(--accent); }
+  .tldr .tag { font-family: var(--mono); font-size: 10px; color: var(--accent); letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 12px; }
+  .tldr h2 { font-family: var(--serif); font-weight: 400; font-size: 32px; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 4px; }
+  .tldr h2 em { color: var(--accent); font-style: italic; }
+  .tldr .sub { color: var(--fg-dim); font-size: 13px; margin-bottom: 16px; }
+  .tldr-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); margin-bottom: 16px; }
+  .tldr-grid .cell { background: var(--bg); padding: 12px 12px; }
+  .tldr-grid .cell b { display: block; font-family: var(--serif); font-size: 24px; font-weight: 400; letter-spacing: -0.01em; margin-bottom: 2px; }
+  .tldr-grid .cell span { font-family: var(--mono); font-size: 9px; color: var(--fg-mute); letter-spacing: 0.08em; text-transform: uppercase; }
+  .tldr-body { display: grid; grid-template-columns: 1.1fr 1fr; gap: 24px; margin-bottom: 14px; }
+  .tldr-body h4 { font-family: var(--mono); font-size: 10px; color: var(--accent); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 8px; padding-bottom: 6px; border-bottom: 1px solid var(--line); }
+  .tldr-body p { color: var(--fg-dim); font-size: 12.5px; line-height: 1.5; margin-bottom: 6px; }
+  .tldr-body strong { color: var(--fg); font-weight: 500; }
+  .tldr-body ul { list-style: none; }
+  .tldr-body li { font-size: 12.5px; padding: 3px 0; color: var(--fg-dim); display: flex; gap: 8px; }
+  .tldr-body li::before { content: '→'; color: var(--accent); flex-shrink: 0; }
+  .tldr-cta { display: flex; gap: 8px; flex-wrap: wrap; padding-top: 14px; border-top: 1px solid var(--line); }
+  .tldr-cta a { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; padding: 8px 14px; border: 1px solid var(--line-strong); color: var(--fg); transition: all 0.2s; border-radius: 3px; }
+  .tldr-cta a:hover { background: var(--fg); color: var(--bg); }
+  .tldr-cta a.primary { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+  .tldr-cta a.primary:hover { background: #ffa078; }
+  .tldr-explore { font-family: var(--mono); font-size: 10px; color: var(--fg-mute); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 10px; text-align: center; }
+  .tldr-explore button { background: none; border: none; color: var(--accent); cursor: pointer; font-family: inherit; font-size: inherit; letter-spacing: inherit; text-transform: inherit; text-decoration: underline; }
+
+  @media (max-width: 900px) {
+    .nav { padding: 14px 18px; }
+    .nav-links { display: none; }
+    .hero { padding: 110px 22px 60px; }
+    section.sec { padding: 80px 22px; }
+    .about, .stack-grid, .certs-grid, .contact-grid { grid-template-columns: 1fr; gap: 32px; }
+    .project-grid { grid-template-columns: 1fr; }
+    .hero-stats { grid-template-columns: repeat(2, 1fr); }
+    .exp-item { grid-template-columns: 1fr; gap: 12px; }
+    .exp-tags { justify-content: flex-start; max-width: 100%; }
+    .tldr { padding: 22px 18px; max-height: 96vh; overflow-y: auto; }
+    .tldr-grid, .tldr-body { grid-template-columns: 1fr 1fr; }
+    .tldr-body { gap: 20px; }
+    footer { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<div class="grain"></div>
+<div class="progress" id="progress"></div>
+
+<nav class="nav">
+  <a href="#top" class="brand">
+    <span class="brand-mark">OP</span>
+    <span class="brand-name">Omkar Pallerla</span>
+    <span class="brand-sub">BI Developer</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about" data-nav>About</a></li>
+    <li><a href="#experience" data-nav>Experience</a></li>
+    <li><a href="#projects" data-nav>Projects</a></li>
+    <li><a href="#stack" data-nav>Stack</a></li>
+    <li><a href="#certs" data-nav>Certs</a></li>
+    <li><a href="#contact" data-nav>Contact</a></li>
+  </ul>
+  <div class="nav-cta">
+    <button class="btn ghost" id="tldrBtn">30-sec Overview</button>
+    <a class="btn primary" href="https://www.linkedin.com/in/omkar-pallerla" target="_blank" rel="noopener">LinkedIn ↗</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <canvas id="heroCanvas"></canvas>
+  <div class="hero-content">
+    <div class="status-pill"><span class="live-dot"></span>Available · Phoenix, AZ · F-1 OPT Active</div>
+    <h1>Turning data into <em>decisions</em> that matter.</h1>
+    <p class="subline"><strong>BI Developer &amp; Data Analyst</strong> with 4+ years building dashboards, pipelines, and analytics systems. MS Business Analytics, ASU (4.0 GPA). Certified in Azure · Databricks · GCP.</p>
+    <div class="hero-ctas">
+      <button class="btn primary" id="heroTldr">Recruiter TL;DR →</button>
+      <a class="btn" href="#projects" data-nav>View 9 Projects</a>
+      <a class="btn" href="https://www.linkedin.com/in/omkar-pallerla" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a class="btn" href="mailto:omkar.m.pallerla@gmail.com">Email</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><b>4+</b><span>Years Exp</span></div>
+      <div class="stat"><b>30+</b><span>Dashboards</span></div>
+      <div class="stat"><b>99%</b><span>Data Accuracy</span></div>
+      <div class="stat"><b>4.0</b><span>ASU GPA</span></div>
+      <div class="stat"><b>3×</b><span>Cloud Certified</span></div>
+    </div>
+  </div>
+  <div class="scroll-hint"><span>Scroll</span><div class="scroll-line"></div></div>
+</header>
+
+<section class="sec" id="about">
+  <div class="sec-head"><div class="sec-tag">// 01 — about</div><h2>BI Analyst. <em>Pipeline-aware.</em></h2></div>
+  <div class="about">
+    <div>
+      <p>I'm a <strong>BI Developer and Data Analyst</strong> based in Phoenix, AZ with <strong>4+ years</strong> of experience turning messy, fragmented data into reliable systems that drive decisions.</p>
+      <p>At <strong>Onix</strong>, I led a team of 4 BI developers, deployed <strong>30+ production dashboards</strong> adopted by C-suite, and built ETL pipelines delivering 99% data accuracy. Led a full Tableau-to-MicroStrategy migration — completed 3 weeks ahead of schedule.</p>
+      <blockquote>I build the dashboard and I can trace a data quality issue back to the pipeline — a rare combination that saves teams weeks of back-and-forth.</blockquote>
+      <p>My core strength is BI &amp; analytics — Power BI (DAX, RLS, drill-through), Tableau, Looker/LookML, and SQL across BigQuery, Snowflake, and SQL Server. My DE background means I can fix what's upstream when the data is wrong.</p>
+    </div>
+    <ol class="timeline">
+      <li><span class="tl-year">2026 — now</span><h4>Research Assistant — ASU W. P. Carey</h4><p>AI-driven demand forecasting · ARIMA / RF / XGBoost · Plotly Dash</p></li>
+      <li><span class="tl-year">Dec 2025</span><h4>MS Business Analytics — ASU W.P. Carey</h4><p>4.0 GPA · 2 capstones (Grip Lab AI, Caliber.global)</p></li>
+      <li><span class="tl-year">2021–24</span><h4>Data Analyst — Onix</h4><p>Led 4-person BI team · 30+ dashboards · C-suite adopted</p></li>
+      <li><span class="tl-year">2020</span><h4>Tableau Intern — Infonyx</h4><p>+25% revenue forecasting accuracy for airline client</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="sec" id="experience">
+  <div class="sec-head"><div class="sec-tag">// 02 — experience</div><h2>Four years shipping <em>BI that moves numbers.</em></h2><p class="sec-sub">From Pune to Phoenix. Dashboards adopted by C-suites, pipelines hitting 99% accuracy, and capstones that fed straight into this portfolio.</p></div>
+  <div class="exp-list">
+
+    <div class="exp-item">
+      <div class="exp-year">Feb 2026 — Present</div>
+      <div class="exp-role">
+        <h4>Research Assistant — AI-Driven Demand Forecasting &amp; Capacity Optimization</h4>
+        <div class="co">W. P. Carey School of Business · Arizona State University · Tempe, AZ (Remote)</div>
+        <ul>
+          <li>Analyzed <strong>36 months of synthetic semiconductor manufacturing data</strong> with Python (pandas, NumPy, seaborn) — EDA, outlier detection, normality tests, correlation analysis to surface key demand drivers</li>
+          <li>Built &amp; compared forecasting models (<strong>ARIMA, Random Forest, XGBoost</strong>) cutting forecast error (MAPE) from ~18% to &lt;10%; applied SHAP to communicate feature importance to stakeholders</li>
+          <li>Designed an interactive KPI dashboard in <strong>Plotly Dash</strong> with SPC control charts and automated alerts — translating capacity data into action for decision-makers</li>
+        </ul>
+      </div>
+      <div class="exp-tags"><span>Python</span><span>XGBoost</span><span>SHAP</span><span>Plotly Dash</span><span>SPC</span></div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-year">Aug — Dec 2025</div>
+      <div class="exp-role">
+        <h4>Data Analyst — Capstone Project</h4>
+        <div class="co">Grip Lab AI · Tempe, AZ (Remote)</div>
+        <ul>
+          <li>Built <strong>XGBoost and Random Forest</strong> models in Python hitting <strong>86.67% accuracy</strong> classifying athlete neuromuscular fatigue from biometric/wearable sensor data</li>
+          <li>Engineered proprietary <strong>asymmetry indices</strong> and feature pipelines; validated outputs with SQL testing across <strong>66.67% of test-day results</strong></li>
+          <li>Delivered executive decision-support dashboards in <strong>Power BI</strong> surfacing recovery readiness scores for coaching staff</li>
+          <li>Findings contributed to Grip Lab AI's <strong>Utility Patent filing</strong> for a wearable fatigue detection algorithm</li>
+        </ul>
+      </div>
+      <div class="exp-tags"><span>XGBoost</span><span>Random Forest</span><span>Python</span><span>Power BI</span><span>SQL</span></div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-year">Aug — Oct 2025</div>
+      <div class="exp-role">
+        <h4>Market Analyst — Capstone Project</h4>
+        <div class="co">Caliber.global · Tempe, AZ (Remote)</div>
+        <ul>
+          <li>Standardized <strong>10+ KPIs</strong> and improved reporting accuracy by <strong>23%</strong> through customer segmentation modeling and automated KPI validation workflows</li>
+          <li>Identified workflow gaps and translated cross-functional stakeholder requirements into structured <strong>BRDs</strong> and data-driven reporting solutions</li>
+        </ul>
+      </div>
+      <div class="exp-tags"><span>Segmentation</span><span>KPI</span><span>BRD</span><span>Requirements</span></div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-year">Sep 2021 — Nov 2024</div>
+      <div class="exp-role">
+        <h4>Data Analyst</h4>
+        <div class="co">Onix · Full-time · 3 yrs 3 mos · Pune, India · On-site</div>
+        <ul>
+          <li>Led a <strong>4-member BI team</strong> shipping <strong>30+ Power BI and Tableau dashboards</strong> across finance, ops, and supply chain — adopted by C-suite for weekly executive reviews</li>
+          <li>Architected <strong>ETL/ELT pipelines on GCP</strong> using Pub/Sub &amp; Dataflow for real-time decisions, reducing processing latency by <strong>50%</strong></li>
+          <li>Designed <strong>star-schema warehouses</strong> on SQL Server / Snowflake; cut ad-hoc query runtime by <strong>35%</strong> through indexing &amp; partition strategies</li>
+          <li>Automated stakeholder workflows via 30+ Tableau and Looker dashboards — <strong>15% gain in operational efficiency</strong></li>
+          <li>Spearheaded full <strong>Tableau-to-MicroStrategy migration</strong>: data model re-mapping, QA validation, user training — delivered <strong>3 weeks ahead of schedule</strong></li>
+          <li>Implemented <strong>Row-Level Security (RLS) &amp; RBAC</strong> in Power BI for 20+ end users, enabling self-service analytics at scale</li>
+          <li>Optimized <strong>DAX measures &amp; Power Query M</strong> scripts — cut report load times by <strong>40%</strong> on 10M+ row datasets</li>
+        </ul>
+      </div>
+      <div class="exp-tags"><span>Power BI</span><span>Tableau</span><span>Looker</span><span>MicroStrategy</span><span>GCP</span><span>Snowflake</span><span>DAX</span><span>RLS</span></div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-year">Feb — Sep 2021</div>
+      <div class="exp-role">
+        <h4>Associate Engineer II</h4>
+        <div class="co">Onix · Pune, India</div>
+        <ul>
+          <li>Supported data migration &amp; pipeline development onboarding new client datasets into <strong>Snowflake</strong> — contributed to ETL workflow standardization across the BI team</li>
+          <li>Assisted senior analysts building <strong>Tableau and Looker</strong> dashboards — built foundational skills in data modeling and visualization best practices</li>
+        </ul>
+      </div>
+      <div class="exp-tags"><span>ETL</span><span>Snowflake</span><span>Looker</span><span>Tableau</span></div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-year">Aug — Oct 2020</div>
+      <div class="exp-role">
+        <h4>Tableau Intern</h4>
+        <div class="co">Infonyx · Internship · Pune, India (Remote)</div>
+        <ul>
+          <li>Engineered interactive Tableau &amp; SQL dashboards — delivered insights that improved <strong>revenue forecasting accuracy by 25%</strong> for an airline client</li>
+          <li>Designed dynamic real-time dashboards, improving reporting efficiency and enabling <strong>15% faster business insights</strong></li>
+        </ul>
+      </div>
+      <div class="exp-tags"><span>Tableau</span><span>SQL</span><span>KPI</span></div>
+    </div>
+
+  </div>
+  <a href="https://www.linkedin.com/in/omkar-pallerla" target="_blank" rel="noopener" class="linkedin-cta">Full experience on LinkedIn ↗</a>
+</section>
+
+<section class="sec" id="projects">
+  <div class="sec-head"><div class="sec-tag">// 03 — projects</div><h2>Work that <em>ships.</em></h2><p class="sec-sub">Nine shipped projects across BI &amp; Analytics, Machine Learning, and Data Engineering. All on GitHub with full code &amp; documentation.</p></div>
+  <div class="filter-bar" id="filterBar">
+    <button class="filter active" data-filter="all">All · 9</button>
+    <button class="filter" data-filter="bi">BI &amp; Analytics</button>
+    <button class="filter" data-filter="ml">Machine Learning</button>
+    <button class="filter" data-filter="de">Data Engineering</button>
+  </div>
+  <div class="project-grid" id="projectGrid"></div>
+</section>
+
+<section class="sec" id="stack">
+  <div class="sec-head"><div class="sec-tag">// 04 — tech stack</div><h2>BI-first stack. <em>DE when it counts.</em></h2></div>
+  <div class="stack-grid">
+    <div class="stack-col"><h4>BI &amp; Visualization</h4><ul><li>Power BI · DAX · RLS</li><li>Tableau</li><li>Looker · LookML</li><li>MicroStrategy</li><li>Power Query M</li></ul></div>
+    <div class="stack-col"><h4>Data Engineering</h4><ul><li>GCP Dataflow · Apache Beam</li><li>Pub/Sub · Event Streaming</li><li>Databricks · Delta Lake</li><li>Azure Data Factory</li><li>Cloud Composer · Airflow</li></ul></div>
+    <div class="stack-col"><h4>Cloud &amp; Warehouses</h4><ul><li>Snowflake</li><li>BigQuery</li><li>GCP · Azure · Databricks</li><li>SQL Server · PostgreSQL</li><li>Star Schema · Dim Modeling</li></ul></div>
+    <div class="stack-col"><h4>Languages &amp; Methods</h4><ul><li>SQL · CTEs · Window Fns</li><li>Python · Pandas · NumPy</li><li>XGBoost · Scikit-Learn</li><li>Agile · DMAIC · UAT</li><li>BRD · Requirements</li></ul></div>
+  </div>
+</section>
+
+<section class="sec" id="certs">
+  <div class="sec-head"><div class="sec-tag">// 05 — certifications</div><h2>Certified across the <em>cloud data stack.</em></h2></div>
+  <div class="certs-grid">
+    <div class="cert"><div class="cert-logo"><img src="assets/logo-microsoft.png" alt="Microsoft" /></div><h4>Azure Data Engineer Associate</h4><span class="c-meta">Microsoft · DP-203</span><span class="ok">✓ CERTIFIED</span></div>
+    <div class="cert"><div class="cert-logo"><img src="assets/logo-databricks.png" alt="Databricks" /></div><h4>Databricks Data Engineer Associate</h4><span class="c-meta">Databricks</span><span class="ok">✓ CERTIFIED</span></div>
+    <div class="cert"><div class="cert-logo"><img src="assets/logo-google.png" alt="Google Cloud" /></div><h4>Associate Cloud Engineer</h4><span class="c-meta">Google Cloud · GCP</span><span class="ok">✓ CERTIFIED</span></div>
+  </div>
+</section>
+
+<section class="sec" id="contact">
+  <div class="sec-head"><div class="sec-tag">// 06 — contact</div><div class="status-pill"><span class="live-dot"></span>Open to Work</div><h2>Let's build <em>something together.</em></h2><p class="sec-sub">Actively looking for <strong style="color: var(--fg);">BI Analyst, BI Developer, Analytics Engineer, and Data Analyst</strong> roles across the US. Phoenix, AZ — open to relocation. F-1 OPT · STEM OPT eligible through ~Feb 2029.</p></div>
+  <div class="contact-grid">
+    <a class="contact-card" id="emailCardLink" href="#"><span class="c-label">Email</span><span class="c-val" id="emailCardText">—</span><span class="c-meta">Reply within 24 hours</span></a>
+    <a class="contact-card" href="https://www.linkedin.com/in/omkar-pallerla" target="_blank" rel="noopener"><span class="c-label">LinkedIn</span><span class="c-val">/in/omkar-pallerla</span><span class="c-meta">↗ Connect</span></a>
+    <a class="contact-card" href="https://github.com/omkarpallerla" target="_blank" rel="noopener"><span class="c-label">GitHub</span><span class="c-val">/omkarpallerla</span><span class="c-meta">↗ Code &amp; projects</span></a>
+    <div class="contact-card"><span class="c-label">Location</span><span class="c-val">Phoenix, AZ</span><span class="c-meta">Open to relocation</span></div>
+  </div>
+</section>
+
+<footer>
+  <div>© 2026 Omkar Pallerla · BI Developer &amp; Data Analyst</div>
+  <div>MS Business Analytics · ASU · Azure | Databricks | GCP</div>
+</footer>
+
+<div class="modal-overlay" id="modalOverlay"></div>
+<div class="tldr" id="tldr">
+  <button class="tldr-close" id="tldrClose" aria-label="close">×</button>
+  <div class="tag">// 30-Second Overview</div>
+  <h2>Omkar Pallerla — <em>BI Developer &amp; Data Analyst</em></h2>
+  <div class="sub">Phoenix, AZ · Open to relocation · <span style="color: var(--accent-3);">● Available</span> · F-1 OPT Active</div>
+  <div class="tldr-grid">
+    <div class="cell"><b>4+</b><span>Years Exp</span></div>
+    <div class="cell"><b>30+</b><span>Dashboards</span></div>
+    <div class="cell"><b>4.0</b><span>ASU GPA</span></div>
+    <div class="cell"><b>3×</b><span>Cloud Certs</span></div>
+  </div>
+  <div class="tldr-body">
+    <div>
+      <h4>What I Do</h4>
+      <p><strong>BI-first</strong> analyst who can go upstream. Power BI, Tableau, Looker, MicroStrategy on the front. SQL, Snowflake, BigQuery, Databricks, Azure, GCP under the hood.</p>
+      <p>Led a 4-person BI team at <strong>Onix</strong>, shipped C-suite dashboards at 99% data accuracy, ran a Tableau → MicroStrategy migration 3 weeks ahead of schedule.</p>
+    </div>
+    <div>
+      <h4>Looking For</h4>
+      <ul>
+        <li>BI Analyst / BI Developer</li>
+        <li>Analytics Engineer</li>
+        <li>Data Analyst</li>
+        <li>Remote, hybrid, or relocation</li>
+        <li>STEM OPT eligible through ~Feb 2029</li>
+      </ul>
+    </div>
+  </div>
+  <div class="tldr-body">
+    <div><h4>Education</h4><p><strong>MS Business Analytics</strong> — ASU W.P. Carey · 4.0 GPA · Dec 2025</p></div>
+    <div><h4>Certifications</h4><p>Azure Data Engineer · Databricks DE Associate · GCP Associate Cloud Engineer</p></div>
+  </div>
+  <div class="tldr-cta">
+    <a href="https://www.linkedin.com/in/omkar-pallerla" target="_blank" rel="noopener" class="primary">LinkedIn ↗</a>
+    <a id="emailTldrLink" href="#">—</a>
+    <a href="https://github.com/omkarpallerla" target="_blank" rel="noopener">GitHub ↗</a>
+  </div>
+  <div class="tldr-explore">Want details? <button id="tldrExplore">Scroll through the portfolio ↓</button></div>
+</div>
+
+<script type="importmap">
+{ "imports": { "three": "https://unpkg.com/three@0.160.0/build/three.module.js" } }
+</script>
+<script type="module">
+import * as THREE from 'three';
+
+// Email assembled at runtime to defeat scraper/obfuscator extensions
+(() => {
+  const user = ['omkar','m','pallerla'].join('.');
+  const domain = ['gmail','com'].join('.');
+  const addr = user + String.fromCharCode(64) + domain;
+  const setEmail = (id) => { const el = document.getElementById(id); if (!el) return; if (el.tagName === 'A') { el.href = 'mail' + 'to:' + addr; el.textContent = addr; } };
+  setEmail('emailTldrLink');
+  const card = document.getElementById('emailCardLink');
+  const cardText = document.getElementById('emailCardText');
+  if (card) card.href = 'mail' + 'to:' + addr;
+  if (cardText) cardText.textContent = addr;
+})();
+
+const PROJECTS = [
+  { id: 1, title: 'Grip Lab AI — Wearable Recovery Algorithm', cats: ['ml','bi'], desc: 'XGBoost & Random Forest models detecting neuromuscular fatigue missed by standard wearables. Proprietary Asymmetry Indices quantify CNS readiness. Contributing to Utility Patent filing.', metrics: [['86.67%','Accuracy'],['66.67%','Days Corrected'],['Patent','Pending']], tags: ['XGBoost','Python','Power BI','Tableau'], link: 'https://github.com/omkarpallerla/Grip-Lab-Wearable-AI' },
+  { id: 2, title: 'Lean Six Sigma Process Analytics', cats: ['de','bi'], desc: 'DMAIC project cutting Gentech\'s proposal cycle time from 31.6 → 26.9 days. Live Databricks pipeline auto-alerts ops managers on SLA breaches via Tableau dashboard.', metrics: [['-15%','Cycle Time'],['-83%','Rework Rate'],['26.9d','New Cycle']], tags: ['Databricks','Tableau','DMAIC','Python'], link: 'https://github.com/omkarpallerla/Lean-Six-Sigma-Process-Analytics' },
+  { id: 3, title: 'Diabetes Prediction · 10-Algo Benchmark', cats: ['ml','bi'], desc: 'XGBoost (0.84 AUC) benchmarked against 10+ ML models on Pima dataset. Scoring pipeline on Snowflake staging + Python → Power BI patient risk dashboard.', metrics: [['0.84','AUC-ROC'],['10+','Models'],['PIMA','Dataset']], tags: ['XGBoost','Snowflake','Power BI','Python'], link: 'https://github.com/omkarpallerla/Diabetes-Prediction-Ensemble-Modeling' },
+  { id: 4, title: 'Yelp Fake Review Detection — NLP', cats: ['ml','de'], desc: 'VADER sentiment + XGBoost fraud detection engine achieving 99% F1. Flags fake reviews using asymmetry indices, caps ratio, and TF-IDF features via Databricks pipeline.', metrics: [['99%','F1 Score'],['2K+','Reviews'],['NLP','Pipeline']], tags: ['NLP','XGBoost','Databricks','Python'], link: 'https://github.com/omkarpallerla/Yelp-Fake-Review-Detection-NLP' },
+  { id: 5, title: 'Strategic Investment Risk Analysis', cats: ['bi','ml'], desc: '10,000-iteration Monte Carlo simulation for EV capacity planning. Bayesian Decision Trees determine optimal capital allocation. CFO adjusts assumptions live in Power BI.', metrics: [['$883M','Expected NPV'],['10K','Simulations'],['Live','CFO Dash']], tags: ['Python','Power BI','Monte Carlo','SciPy'], link: 'https://github.com/omkarpallerla/Strategic-Risk-Analysis-Monte-Carlo' },
+  { id: 6, title: 'E-Scoot Network Optimization', cats: ['bi','de'], desc: 'MILP facility location model solving depot placement for e-scooter fleet. Saved 19% of infrastructure budget while meeting 100% demand coverage. Visualized on Power BI Azure Maps.', metrics: [['19%','Budget Saved'],['100%','Coverage'],['MILP','Optimized']], tags: ['MILP','Python','Power BI','Azure Maps'], link: 'https://github.com/omkarpallerla/E-Scoot-Network-Optimization' },
+  { id: 7, title: 'Obesity Risk Classification', cats: ['ml','bi'], desc: '94.2% accuracy Random Forest with SHAP explainability. Risk scores exported to Power BI care coordinator dashboard — Low/Medium/High tiers drive daily patient triage.', metrics: [['94.2%','Accuracy'],['0.97','AUC'],['SHAP','Explained']], tags: ['Random Forest','SHAP','Power BI','Scikit-Learn'], link: 'https://github.com/omkarpallerla/Obesity-Risk-Classification' },
+  { id: 8, title: 'Used Car Price Prediction', cats: ['ml','bi'], desc: 'Polynomial Regression (R²=0.93) with VIF diagnostics predicting resale value. Predicted prices feed Power BI inventory dashboard flagging over/underpriced vehicles.', metrics: [['0.93','R² Score'],['18%','Diesel Premium'],['Live','Pricing']], tags: ['Regression','Power BI','Python','Statsmodels'], link: 'https://github.com/omkarpallerla/Used-Car-Price-Prediction' },
+  { id: 9, title: 'Spotify Songs Popularity Analysis', cats: ['bi'], desc: 'Analyzed 50,000+ tracks to uncover the audio feature fingerprint of hit songs. Danceability + Energy > 0.7 is the formula. Power BI streaming analytics dashboard.', metrics: [['50K+','Tracks'],['0.48','Top Corr.'],['Audio','Features']], tags: ['Python','Power BI','Pandas','Plotly'], link: 'https://github.com/omkarpallerla/Spotify-Songs-Popularity' }
+];
+const CAT_LABEL = { bi: 'BI & Analytics', ml: 'Machine Learning', de: 'Data Engineering' };
+
+const grid = document.getElementById('projectGrid');
+function renderProjects(filter = 'all') {
+  grid.innerHTML = PROJECTS.filter(p => filter === 'all' || p.cats.includes(filter)).map(p => {
+    const primary = p.cats[0];
+    return `<article class="project" data-primary="${primary}"><div class="p-head"><span class="p-num">// ${String(p.id).padStart(2,'0')}</span><span class="p-cat ${primary}">${CAT_LABEL[primary]}</span></div><h3>${p.title}</h3><p class="p-desc">${p.desc}</p><div class="p-metrics">${p.metrics.map(([v,l]) => `<div><b>${v}</b><span>${l}</span></div>`).join('')}</div><div class="p-tags">${p.tags.map(t => `<span>${t}</span>`).join('')}</div><a class="p-link" href="${p.link}" target="_blank" rel="noopener">View on GitHub<span>↗</span></a></article>`;
+  }).join('');
+}
+renderProjects();
+document.querySelectorAll('.filter').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    renderProjects(btn.dataset.filter);
+  });
+});
+
+const heroCanvas = document.getElementById('heroCanvas');
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
+camera.position.set(0, 0, 8);
+const renderer = new THREE.WebGLRenderer({ canvas: heroCanvas, antialias: true, alpha: true });
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+function resizeHero() {
+  const hero = document.querySelector('.hero');
+  const w = hero.clientWidth, h = hero.clientHeight;
+  renderer.setSize(w, h, false);
+  camera.aspect = w / h;
+  camera.updateProjectionMatrix();
+}
+resizeHero();
+window.addEventListener('resize', resizeHero);
+
+const group = new THREE.Group();
+scene.add(group);
+const core = new THREE.Mesh(new THREE.IcosahedronGeometry(1.6, 1), new THREE.MeshBasicMaterial({ color: 0xff8554, wireframe: true, transparent: true, opacity: 0.35 }));
+group.add(core);
+const inner = new THREE.Mesh(new THREE.IcosahedronGeometry(0.7, 0), new THREE.MeshBasicMaterial({ color: 0xff8554, wireframe: true, transparent: true, opacity: 0.6 }));
+group.add(inner);
+const ring = new THREE.Mesh(new THREE.TorusGeometry(2.6, 0.01, 8, 140), new THREE.MeshBasicMaterial({ color: 0x7fd8ff, transparent: true, opacity: 0.4 }));
+ring.rotation.x = Math.PI / 2.2;
+group.add(ring);
+const ring2 = new THREE.Mesh(new THREE.TorusGeometry(3.2, 0.006, 8, 140), new THREE.MeshBasicMaterial({ color: 0xc8ff7a, transparent: true, opacity: 0.25 }));
+ring2.rotation.x = Math.PI / 1.6;
+ring2.rotation.y = Math.PI / 3;
+group.add(ring2);
+
+const pCount = 500;
+const pGeo = new THREE.BufferGeometry();
+const pPos = new Float32Array(pCount * 3);
+for (let i = 0; i < pCount; i++) {
+  const r = 4 + Math.random() * 6;
+  const th = Math.random() * Math.PI * 2;
+  const ph = Math.acos(2 * Math.random() - 1);
+  pPos[i*3] = r * Math.sin(ph) * Math.cos(th);
+  pPos[i*3+1] = r * Math.sin(ph) * Math.sin(th);
+  pPos[i*3+2] = r * Math.cos(ph);
+}
+pGeo.setAttribute('position', new THREE.BufferAttribute(pPos, 3));
+scene.add(new THREE.Points(pGeo, new THREE.PointsMaterial({ size: 0.025, color: 0xffffff, transparent: true, opacity: 0.6 })));
+
+group.position.x = 2.2;
+let mx = 0, my = 0;
+window.addEventListener('mousemove', (e) => {
+  mx = (e.clientX / window.innerWidth - 0.5) * 2;
+  my = (e.clientY / window.innerHeight - 0.5) * 2;
+});
+function animate() {
+  const t = performance.now() * 0.001;
+  core.rotation.y = t * 0.25; core.rotation.x = t * 0.15;
+  inner.rotation.y = -t * 0.5; inner.rotation.z = t * 0.3;
+  ring.rotation.z = t * 0.3; ring2.rotation.z = -t * 0.2;
+  group.rotation.y += (mx * 0.3 - group.rotation.y) * 0.04;
+  group.rotation.x += (my * 0.2 - group.rotation.x) * 0.04;
+  renderer.render(scene, camera);
+  requestAnimationFrame(animate);
+}
+animate();
+
+const progressBar = document.getElementById('progress');
+const navLinks = document.querySelectorAll('.nav-links a');
+const sections = ['about','experience','projects','stack','certs','contact'].map(id => document.getElementById(id));
+function onScroll() {
+  const top = window.scrollY;
+  const max = document.documentElement.scrollHeight - window.innerHeight;
+  progressBar.style.width = ((top / max) * 100) + '%';
+  let activeId = '';
+  for (const s of sections) {
+    if (!s) continue;
+    const rect = s.getBoundingClientRect();
+    if (rect.top <= 120 && rect.bottom > 120) { activeId = s.id; break; }
+  }
+  navLinks.forEach(a => {
+    const href = a.getAttribute('href').slice(1);
+    a.classList.toggle('active', href === activeId);
+  });
+}
+window.addEventListener('scroll', onScroll, { passive: true });
+onScroll();
+
+const tldr = document.getElementById('tldr');
+const modalOverlay = document.getElementById('modalOverlay');
+const tldrBtn = document.getElementById('tldrBtn');
+const heroTldr = document.getElementById('heroTldr');
+const tldrClose = document.getElementById('tldrClose');
+const tldrExplore = document.getElementById('tldrExplore');
+function openTldr() { tldr.classList.add('open'); modalOverlay.classList.add('open'); document.body.style.overflow = 'hidden'; }
+function closeTldr() { tldr.classList.remove('open'); modalOverlay.classList.remove('open'); document.body.style.overflow = ''; }
+tldrBtn.addEventListener('click', openTldr);
+heroTldr.addEventListener('click', openTldr);
+tldrClose.addEventListener('click', closeTldr);
+modalOverlay.addEventListener('click', closeTldr);
+tldrExplore.addEventListener('click', () => { closeTldr(); document.getElementById('about').scrollIntoView({ behavior: 'smooth' }); });
+window.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeTldr(); });
+setTimeout(openTldr, 700);
+</script>
+</body>
+</html>
