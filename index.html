@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Omkar Pallerla · BI Developer &amp; Data Analyst</title>
+<title>Omkar Pallerla · Business Intelligence Analyst | Data Analytics</title>
+<meta name="description" content="Omkar Pallerla - Business Intelligence Analyst with 4+ years in dashboards, SQL, Python and cloud analytics. MS Business Analytics, Arizona State University." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -130,7 +131,12 @@
   .stack-col ul { list-style: none; }
   .stack-col li { padding: 8px 0; color: var(--fg-dim); font-size: 14px; border-bottom: 1px dashed var(--line); }
 
-  .certs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .certs-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  .qr-row { display: flex; gap: 28px; flex-wrap: wrap; margin-top: 44px; }
+  .qr-tile { background: #fff; color: #111; padding: 14px 14px 12px; border-radius: 6px; text-align: center; width: 190px; }
+  .qr-tile img { width: 100%; display: block; }
+  .qr-tile b { display: block; font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; margin-top: 8px; }
+  .qr-title { font-family: var(--mono); font-size: 11px; color: var(--accent); letter-spacing: 0.14em; text-transform: uppercase; margin-top: 56px; }
   .cert { padding: 28px; border: 1px solid var(--line); background: var(--bg-2); display: flex; flex-direction: column; gap: 10px; transition: all 0.3s; }
   .cert:hover { border-color: var(--accent); transform: translateY(-3px); }
   .cert-logo { width: 64px; height: 64px; display: grid; place-items: center; background: #fff; border-radius: 8px; margin-bottom: 10px; padding: 10px; }
@@ -180,9 +186,13 @@
   @media (max-width: 900px) {
     .nav { padding: 14px 18px; }
     .nav-links { display: none; }
+    .nav-cta .btn:not(.primary):not(.ghost) { display: none; }
+    .brand-sub { display: none; }
+    .nav-cta .btn { padding: 8px 10px; font-size: 10px; }
     .hero { padding: 110px 22px 60px; }
     section.sec { padding: 80px 22px; }
-    .about, .stack-grid, .certs-grid, .contact-grid { grid-template-columns: 1fr; gap: 32px; }
+    .about, .stack-grid, .contact-grid { grid-template-columns: 1fr; gap: 32px; }
+    .certs-grid { grid-template-columns: 1fr 1fr; }
     .project-grid { grid-template-columns: 1fr; }
     .hero-stats { grid-template-columns: repeat(2, 1fr); }
     .exp-item { grid-template-columns: 1fr; gap: 12px; }
@@ -203,7 +213,7 @@
   <a href="#top" class="brand">
     <span class="brand-mark">OP</span>
     <span class="brand-name">Omkar Pallerla</span>
-    <span class="brand-sub">BI Developer</span>
+    <span class="brand-sub">BI Analyst</span>
   </a>
   <ul class="nav-links">
     <li><a href="#about" data-nav>About</a></li>
@@ -215,6 +225,7 @@
   </ul>
   <div class="nav-cta">
     <button class="btn ghost" id="tldrBtn">30-sec Overview</button>
+    <a class="btn" href="Omkar_Pallerla_Resume.pdf" target="_blank" rel="noopener">Resume ↓</a>
     <a class="btn primary" href="https://www.linkedin.com/in/omkar-pallerla" target="_blank" rel="noopener">LinkedIn ↗</a>
   </div>
 </nav>
@@ -224,19 +235,20 @@
   <div class="hero-content">
     <div class="status-pill"><span class="live-dot"></span>Available · Phoenix, AZ · F-1 OPT Active</div>
     <h1>Turning data into <em>decisions</em> that matter.</h1>
-    <p class="subline"><strong>BI Developer &amp; Data Analyst</strong> with 4+ years building dashboards, pipelines, and analytics systems. MS Business Analytics, ASU (4.0 GPA). Certified in Azure · Databricks · GCP.</p>
+    <p class="subline"><strong>Business Intelligence Analyst</strong> with 4+ years turning raw data into decision-ready reporting across finance, operations, supply chain and cloud analytics. MS Business Analytics, ASU (4.0 GPA). Certified in Google Cloud · Azure · Databricks · Snowflake.</p>
     <div class="hero-ctas">
       <button class="btn primary" id="heroTldr">Recruiter TL;DR →</button>
-      <a class="btn" href="#projects" data-nav>View 9 Projects</a>
+      <a class="btn" href="#projects" data-nav>View 12 Projects</a>
+      <a class="btn" href="Omkar_Pallerla_Resume.pdf" target="_blank" rel="noopener">Download Resume</a>
       <a class="btn" href="https://www.linkedin.com/in/omkar-pallerla" target="_blank" rel="noopener">LinkedIn ↗</a>
       <a class="btn" href="mailto:omkar.m.pallerla@gmail.com">Email</a>
     </div>
     <div class="hero-stats">
       <div class="stat"><b>4+</b><span>Years Exp</span></div>
-      <div class="stat"><b>30+</b><span>Dashboards</span></div>
-      <div class="stat"><b>99%</b><span>Data Accuracy</span></div>
+      <div class="stat"><b>20+</b><span>KPI Reports Standardized</span></div>
+      <div class="stat"><b>40%</b><span>Reporting Time Cut</span></div>
       <div class="stat"><b>4.0</b><span>ASU GPA</span></div>
-      <div class="stat"><b>3×</b><span>Cloud Certified</span></div>
+      <div class="stat"><b>4×</b><span>Certified</span></div>
     </div>
   </div>
   <div class="scroll-hint"><span>Scroll</span><div class="scroll-line"></div></div>
@@ -246,108 +258,71 @@
   <div class="sec-head"><div class="sec-tag">// 01 — about</div><h2>BI Analyst. <em>Pipeline-aware.</em></h2></div>
   <div class="about">
     <div>
-      <p>I'm a <strong>BI Developer and Data Analyst</strong> based in Phoenix, AZ with <strong>4+ years</strong> of experience turning messy, fragmented data into reliable systems that drive decisions.</p>
-      <p>At <strong>Onix</strong>, I led a team of 4 BI developers, deployed <strong>30+ production dashboards</strong> adopted by C-suite, and built ETL pipelines delivering 99% data accuracy. Led a full Tableau-to-MicroStrategy migration — completed 3 weeks ahead of schedule.</p>
+      <p>I'm a <strong>Business Intelligence Analyst</strong> with <strong>4+ years</strong> of experience turning raw data into decision-ready reporting across <strong>finance, operations, supply chain, and cloud analytics</strong>, and a <strong>Master's in Business Analytics</strong> from Arizona State University.</p>
+      <p>I work across dashboard development, semantic modeling, forecasting, and KPI reporting, backed by advanced <strong>SQL, Python, Excel, Power BI, Tableau, and Looker</strong>. I build automated dashboards, ETL pipelines, and data models on <strong>Google Cloud, Azure, and Snowflake</strong> that improve reporting accuracy, reduce manual effort, and give senior leaders timely, reliable insights.</p>
       <blockquote>I build the dashboard and I can trace a data quality issue back to the pipeline — a rare combination that saves teams weeks of back-and-forth.</blockquote>
-      <p>My core strength is BI &amp; analytics — Power BI (DAX, RLS, drill-through), Tableau, Looker/LookML, and SQL across BigQuery, Snowflake, and SQL Server. My DE background means I can fix what's upstream when the data is wrong.</p>
+      <p>Certified in <strong>Google Cloud, Microsoft Azure, Databricks, and Snowflake Generative AI</strong>.</p>
+      <a href="Omkar_Pallerla_Resume.pdf" target="_blank" rel="noopener" class="linkedin-cta" style="margin-top:6px">Download my resume (PDF) ↓</a>
     </div>
     <ol class="timeline">
-      <li><span class="tl-year">2026 — now</span><h4>Research Assistant — ASU W. P. Carey</h4><p>AI-driven demand forecasting · ARIMA / RF / XGBoost · Plotly Dash</p></li>
-      <li><span class="tl-year">Dec 2025</span><h4>MS Business Analytics — ASU W.P. Carey</h4><p>4.0 GPA · 2 capstones (Grip Lab AI, Caliber.global)</p></li>
-      <li><span class="tl-year">2021–24</span><h4>Data Analyst — Onix</h4><p>Led 4-person BI team · 30+ dashboards · C-suite adopted</p></li>
-      <li><span class="tl-year">2020</span><h4>Tableau Intern — Infonyx</h4><p>+25% revenue forecasting accuracy for airline client</p></li>
+      <li><span class="tl-year">Feb 2026 — now</span><h4>Research Analyst — Arizona State University</h4><p>Financial models, forecasting, variance analysis · Power BI &amp; Tableau</p></li>
+      <li><span class="tl-year">Aug — Dec 2025</span><h4>Data Analyst Intern — GripLab AI</h4><p>Healthcare cost &amp; claims analytics · Power BI · Excel forecasting</p></li>
+      <li><span class="tl-year">Dec 2025</span><h4>MS Business Analytics — ASU</h4><p>GPA 4.0</p></li>
+      <li><span class="tl-year">Feb 2021 — Nov 2024</span><h4>Business Intelligence Analyst — Onix</h4><p>Power BI · Tableau · Looker · BigQuery · GCP migration</p></li>
     </ol>
   </div>
 </section>
 
 <section class="sec" id="experience">
-  <div class="sec-head"><div class="sec-tag">// 02 — experience</div><h2>Four years shipping <em>BI that moves numbers.</em></h2><p class="sec-sub">From Pune to Phoenix. Dashboards adopted by C-suites, pipelines hitting 99% accuracy, and capstones that fed straight into this portfolio.</p></div>
+  <div class="sec-head"><div class="sec-tag">// 02 — experience</div><h2>Four years shipping <em>BI that moves numbers.</em></h2><p class="sec-sub">From enterprise BI in India to finance analytics at ASU — dashboards, pipelines and forecasts that cut manual effort and improve accuracy. Same content as my <a href="Omkar_Pallerla_Resume.pdf" target="_blank" rel="noopener" style="color:var(--accent)">resume</a>.</p></div>
   <div class="exp-list">
 
     <div class="exp-item">
       <div class="exp-year">Feb 2026 — Present</div>
       <div class="exp-role">
-        <h4>Research Assistant — AI-Driven Demand Forecasting &amp; Capacity Optimization</h4>
-        <div class="co">W. P. Carey School of Business · Arizona State University · Tempe, AZ (Remote)</div>
+        <h4>Research Analyst</h4>
+        <div class="co">Arizona State University · USA</div>
         <ul>
-          <li>Analyzed <strong>36 months of synthetic semiconductor manufacturing data</strong> with Python (pandas, NumPy, seaborn) — EDA, outlier detection, normality tests, correlation analysis to surface key demand drivers</li>
-          <li>Built &amp; compared forecasting models (<strong>ARIMA, Random Forest, XGBoost</strong>) cutting forecast error (MAPE) from ~18% to &lt;10%; applied SHAP to communicate feature importance to stakeholders</li>
-          <li>Designed an interactive KPI dashboard in <strong>Plotly Dash</strong> with SPC control charts and automated alerts — translating capacity data into action for decision-makers</li>
+          <li>Build and maintain financial models and rolling forecasts in Excel and SQL for quarterly planning, standardizing templates and automating data pulls to improve <strong>forecast accuracy by 15%</strong> and cut manual preparation time by <strong>30%</strong>. Apply regression and trend decomposition in Python to forecast revenue and expense drivers for finance leadership.</li>
+          <li>Perform monthly budget-versus-actual variance and trend analysis across business units, investigating cost drivers, revenue shifts and one-time items — improving expense visibility for senior stakeholders by <strong>10%</strong>. Consolidate departmental inputs into quarterly and year-end forecast packages, reducing planning revision cycles by <strong>20%</strong>.</li>
+          <li>Design and publish interactive <strong>Power BI and Tableau</strong> dashboards tracking margin, spend and revenue KPIs, giving leadership self-service access and cutting recurring ad hoc reporting requests by <strong>25%</strong>.</li>
+          <li>Automate recurring reports and multi-source reconciliations with <strong>Python (Pandas) and SQL</strong>, reducing processing time by <strong>40%</strong> and data discrepancies by <strong>20%</strong>. Validate data quality, document reporting logic and maintain controls to support audit readiness and data governance.</li>
+          <li>Partner with finance, operations and technology teams to turn business questions into analytical deliverables, managing multiple concurrent requests while keeping <strong>98% on-time delivery</strong>.</li>
         </ul>
       </div>
-      <div class="exp-tags"><span>Python</span><span>XGBoost</span><span>SHAP</span><span>Plotly Dash</span><span>SPC</span></div>
+      <div class="exp-tags"><span>Excel</span><span>SQL</span><span>Python</span><span>Power BI</span><span>Tableau</span><span>Forecasting</span></div>
     </div>
 
     <div class="exp-item">
       <div class="exp-year">Aug — Dec 2025</div>
       <div class="exp-role">
-        <h4>Data Analyst — Capstone Project</h4>
-        <div class="co">Grip Lab AI · Tempe, AZ (Remote)</div>
+        <h4>Data Analyst Intern</h4>
+        <div class="co">GripLab AI · USA</div>
         <ul>
-          <li>Built <strong>XGBoost and Random Forest</strong> models in Python hitting <strong>86.67% accuracy</strong> classifying athlete neuromuscular fatigue from biometric/wearable sensor data</li>
-          <li>Engineered proprietary <strong>asymmetry indices</strong> and feature pipelines; validated outputs with SQL testing across <strong>66.67% of test-day results</strong></li>
-          <li>Delivered executive decision-support dashboards in <strong>Power BI</strong> surfacing recovery readiness scores for coaching staff</li>
-          <li>Findings contributed to Grip Lab AI's <strong>Utility Patent filing</strong> for a wearable fatigue detection algorithm</li>
+          <li>Analyzed large healthcare cost and claims datasets with SQL and Excel to uncover spending trends, high-cost categories and utilization patterns, supporting recommendations that identified potential savings of <strong>8–12%</strong> in targeted areas.</li>
+          <li>Developed <strong>Power BI</strong> dashboards combining financial and operational metrics into one manager view, reducing report turnaround by <strong>35%</strong> and enabling faster decisions in weekly business reviews.</li>
+          <li>Built Excel budget and forecast models with scenario and sensitivity inputs, improving projection accuracy by <strong>12%</strong> over prior estimates.</li>
+          <li>Cleaned, standardized and merged multi-source datasets with Python (Pandas) and SQL, improving dataset reliability by <strong>25%</strong> and shortening monthly reporting preparation.</li>
+          <li>Presented findings to cross-functional stakeholders. Supported compliance reviews by tracing data lineage, documenting assumptions and producing reconciliations tied to source systems, with <strong>zero material discrepancies</strong>.</li>
         </ul>
       </div>
-      <div class="exp-tags"><span>XGBoost</span><span>Random Forest</span><span>Python</span><span>Power BI</span><span>SQL</span></div>
+      <div class="exp-tags"><span>SQL</span><span>Excel</span><span>Power BI</span><span>Python</span><span>Healthcare Analytics</span></div>
     </div>
 
     <div class="exp-item">
-      <div class="exp-year">Aug — Oct 2025</div>
+      <div class="exp-year">Feb 2021 — Nov 2024</div>
       <div class="exp-role">
-        <h4>Market Analyst — Capstone Project</h4>
-        <div class="co">Caliber.global · Tempe, AZ (Remote)</div>
+        <h4>Business Intelligence Analyst</h4>
+        <div class="co">Onix · India</div>
         <ul>
-          <li>Standardized <strong>10+ KPIs</strong> and improved reporting accuracy by <strong>23%</strong> through customer segmentation modeling and automated KPI validation workflows</li>
-          <li>Identified workflow gaps and translated cross-functional stakeholder requirements into structured <strong>BRDs</strong> and data-driven reporting solutions</li>
+          <li>Designed and maintained BI dashboards in <strong>Power BI, Tableau and Looker</strong> for enterprise clients, improving reporting efficiency by <strong>40%</strong> and dashboard adoption by <strong>30%</strong>. Built reusable data models and semantic layers that standardized KPI definitions across <strong>20+ reports</strong> and reduced rework by 30%.</li>
+          <li>Wrote and optimized complex SQL queries and ETL pipelines on <strong>Google BigQuery</strong>, using partitioning and query tuning to cut run time by <strong>35%</strong> on datasets with millions of records. Added automated validation checks that reduced reporting errors by 25%.</li>
+          <li>Led migration of legacy Excel and on-premise reporting to <strong>Google Cloud analytics</strong>, redesigning data models and automating refreshes to reduce manual reporting effort by <strong>50%</strong> and improve data accuracy by 20%.</li>
+          <li>Collaborated with business users, project managers and engineers in Agile sprints to gather requirements, define KPIs and deliver self-service analytics, shortening time-to-insight by <strong>30%</strong>.</li>
+          <li>Built predictive and trend models in Python and SQL to forecast client usage and cost, improving planning accuracy by <strong>15%</strong>. Documented models and trained business users, reducing support tickets by 20%.</li>
         </ul>
       </div>
-      <div class="exp-tags"><span>Segmentation</span><span>KPI</span><span>BRD</span><span>Requirements</span></div>
-    </div>
-
-    <div class="exp-item">
-      <div class="exp-year">Sep 2021 — Nov 2024</div>
-      <div class="exp-role">
-        <h4>Data Analyst</h4>
-        <div class="co">Onix · Full-time · 3 yrs 3 mos · Pune, India · On-site</div>
-        <ul>
-          <li>Led a <strong>4-member BI team</strong> shipping <strong>30+ Power BI and Tableau dashboards</strong> across finance, ops, and supply chain — adopted by C-suite for weekly executive reviews</li>
-          <li>Architected <strong>ETL/ELT pipelines on GCP</strong> using Pub/Sub &amp; Dataflow for real-time decisions, reducing processing latency by <strong>50%</strong></li>
-          <li>Designed <strong>star-schema warehouses</strong> on SQL Server / Snowflake; cut ad-hoc query runtime by <strong>35%</strong> through indexing &amp; partition strategies</li>
-          <li>Automated stakeholder workflows via 30+ Tableau and Looker dashboards — <strong>15% gain in operational efficiency</strong></li>
-          <li>Spearheaded full <strong>Tableau-to-MicroStrategy migration</strong>: data model re-mapping, QA validation, user training — delivered <strong>3 weeks ahead of schedule</strong></li>
-          <li>Implemented <strong>Row-Level Security (RLS) &amp; RBAC</strong> in Power BI for 20+ end users, enabling self-service analytics at scale</li>
-          <li>Optimized <strong>DAX measures &amp; Power Query M</strong> scripts — cut report load times by <strong>40%</strong> on 10M+ row datasets</li>
-        </ul>
-      </div>
-      <div class="exp-tags"><span>Power BI</span><span>Tableau</span><span>Looker</span><span>MicroStrategy</span><span>GCP</span><span>Snowflake</span><span>DAX</span><span>RLS</span></div>
-    </div>
-
-    <div class="exp-item">
-      <div class="exp-year">Feb — Sep 2021</div>
-      <div class="exp-role">
-        <h4>Associate Engineer II</h4>
-        <div class="co">Onix · Pune, India</div>
-        <ul>
-          <li>Supported data migration &amp; pipeline development onboarding new client datasets into <strong>Snowflake</strong> — contributed to ETL workflow standardization across the BI team</li>
-          <li>Assisted senior analysts building <strong>Tableau and Looker</strong> dashboards — built foundational skills in data modeling and visualization best practices</li>
-        </ul>
-      </div>
-      <div class="exp-tags"><span>ETL</span><span>Snowflake</span><span>Looker</span><span>Tableau</span></div>
-    </div>
-
-    <div class="exp-item">
-      <div class="exp-year">Aug — Oct 2020</div>
-      <div class="exp-role">
-        <h4>Tableau Intern</h4>
-        <div class="co">Infonyx · Internship · Pune, India (Remote)</div>
-        <ul>
-          <li>Engineered interactive Tableau &amp; SQL dashboards — delivered insights that improved <strong>revenue forecasting accuracy by 25%</strong> for an airline client</li>
-          <li>Designed dynamic real-time dashboards, improving reporting efficiency and enabling <strong>15% faster business insights</strong></li>
-        </ul>
-      </div>
-      <div class="exp-tags"><span>Tableau</span><span>SQL</span><span>KPI</span></div>
+      <div class="exp-tags"><span>Power BI</span><span>Tableau</span><span>Looker</span><span>BigQuery</span><span>GCP</span><span>ETL</span><span>Python</span></div>
     </div>
 
   </div>
@@ -355,9 +330,9 @@
 </section>
 
 <section class="sec" id="projects">
-  <div class="sec-head"><div class="sec-tag">// 03 — projects</div><h2>Work that <em>ships.</em></h2><p class="sec-sub">Nine shipped projects across BI &amp; Analytics, Machine Learning, and Data Engineering. All on GitHub with full code &amp; documentation.</p></div>
+  <div class="sec-head"><div class="sec-tag">// 03 — projects</div><h2>Work that <em>ships.</em></h2><p class="sec-sub">Twelve projects across BI &amp; Analytics, Machine Learning, and Data Engineering. All on GitHub with code and documentation; where a project runs on simulated data, the repo README and a tag on the card say so.</p></div>
   <div class="filter-bar" id="filterBar">
-    <button class="filter active" data-filter="all">All · 9</button>
+    <button class="filter active" data-filter="all">All · 12</button>
     <button class="filter" data-filter="bi">BI &amp; Analytics</button>
     <button class="filter" data-filter="ml">Machine Learning</button>
     <button class="filter" data-filter="de">Data Engineering</button>
@@ -368,19 +343,20 @@
 <section class="sec" id="stack">
   <div class="sec-head"><div class="sec-tag">// 04 — tech stack</div><h2>BI-first stack. <em>DE when it counts.</em></h2></div>
   <div class="stack-grid">
-    <div class="stack-col"><h4>BI &amp; Visualization</h4><ul><li>Power BI · DAX · RLS</li><li>Tableau</li><li>Looker · LookML</li><li>MicroStrategy</li><li>Power Query M</li></ul></div>
-    <div class="stack-col"><h4>Data Engineering</h4><ul><li>GCP Dataflow · Apache Beam</li><li>Pub/Sub · Event Streaming</li><li>Databricks · Delta Lake</li><li>Azure Data Factory</li><li>Cloud Composer · Airflow</li></ul></div>
-    <div class="stack-col"><h4>Cloud &amp; Warehouses</h4><ul><li>Snowflake</li><li>BigQuery</li><li>GCP · Azure · Databricks</li><li>SQL Server · PostgreSQL</li><li>Star Schema · Dim Modeling</li></ul></div>
-    <div class="stack-col"><h4>Languages &amp; Methods</h4><ul><li>SQL · CTEs · Window Fns</li><li>Python · Pandas · NumPy</li><li>XGBoost · Scikit-Learn</li><li>Agile · DMAIC · UAT</li><li>BRD · Requirements</li></ul></div>
+    <div class="stack-col"><h4>BI &amp; Visualization</h4><ul><li>Power BI · DAX</li><li>Tableau</li><li>Looker</li><li>Advanced Excel · Power Query · VBA</li><li>Dashboards · Data Storytelling</li></ul></div>
+    <div class="stack-col"><h4>Data Engineering &amp; Cloud</h4><ul><li>Google Cloud · BigQuery</li><li>Microsoft Azure · Azure AI</li><li>Snowflake · Databricks</li><li>ETL/ELT · Data Pipelines · APIs</li><li>Data Modeling · Data Quality &amp; Governance</li></ul></div>
+    <div class="stack-col"><h4>Programming &amp; Analytics</h4><ul><li>SQL (Advanced)</li><li>Python · Pandas · NumPy · Scikit-learn</li><li>R · Statistical Analysis</li><li>Regression · Forecasting · A/B Testing</li><li>Machine Learning Fundamentals</li></ul></div>
+    <div class="stack-col"><h4>Tools &amp; Methods</h4><ul><li>Jira · Git · SharePoint</li><li>Alteryx · SAP/ERP Reporting</li><li>Agile/Scrum</li><li>Requirements Gathering</li><li>Process Automation · Documentation</li></ul></div>
   </div>
 </section>
 
 <section class="sec" id="certs">
   <div class="sec-head"><div class="sec-tag">// 05 — certifications</div><h2>Certified across the <em>cloud data stack.</em></h2></div>
   <div class="certs-grid">
-    <div class="cert"><div class="cert-logo"><img src="assets/logo-microsoft.png" alt="Microsoft" /></div><h4>Azure Data Engineer Associate</h4><span class="c-meta">Microsoft · DP-203</span><span class="ok">✓ CERTIFIED</span></div>
+    <div class="cert"><div class="cert-logo"><img src="assets/logo-google.png" alt="Google Cloud" /></div><h4>Associate Cloud Engineer</h4><span class="c-meta">Google Cloud</span><span class="ok">✓ CERTIFIED</span></div>
+    <div class="cert"><div class="cert-logo"><img src="assets/logo-microsoft.png" alt="Microsoft" /></div><h4>Azure AI Apps and Agents Developer Associate</h4><span class="c-meta">Microsoft</span><span class="ok">✓ CERTIFIED</span></div>
+    <div class="cert"><div class="cert-logo"><img src="assets/logo-snowflake.svg" alt="Snowflake" /></div><h4>Generative AI Professional Certificate</h4><span class="c-meta">Snowflake</span><span class="ok">✓ CERTIFIED</span></div>
     <div class="cert"><div class="cert-logo"><img src="assets/logo-databricks.png" alt="Databricks" /></div><h4>Databricks Data Engineer Associate</h4><span class="c-meta">Databricks</span><span class="ok">✓ CERTIFIED</span></div>
-    <div class="cert"><div class="cert-logo"><img src="assets/logo-google.png" alt="Google Cloud" /></div><h4>Associate Cloud Engineer</h4><span class="c-meta">Google Cloud · GCP</span><span class="ok">✓ CERTIFIED</span></div>
   </div>
 </section>
 
@@ -390,32 +366,38 @@
     <a class="contact-card" id="emailCardLink" href="#"><span class="c-label">Email</span><span class="c-val" id="emailCardText">—</span><span class="c-meta">Reply within 24 hours</span></a>
     <a class="contact-card" href="https://www.linkedin.com/in/omkar-pallerla" target="_blank" rel="noopener"><span class="c-label">LinkedIn</span><span class="c-val">/in/omkar-pallerla</span><span class="c-meta">↗ Connect</span></a>
     <a class="contact-card" href="https://github.com/omkarpallerla" target="_blank" rel="noopener"><span class="c-label">GitHub</span><span class="c-val">/omkarpallerla</span><span class="c-meta">↗ Code &amp; projects</span></a>
-    <div class="contact-card"><span class="c-label">Location</span><span class="c-val">Phoenix, AZ</span><span class="c-meta">Open to relocation</span></div>
+    <a class="contact-card" href="Omkar_Pallerla_Resume.pdf" target="_blank" rel="noopener"><span class="c-label">Resume</span><span class="c-val">Download PDF</span><span class="c-meta">↓ Omkar_Pallerla_Resume.pdf</span></a>
+    <div class="contact-card" style="grid-column: 1 / -1"><span class="c-label">Location</span><span class="c-val">Phoenix, AZ</span><span class="c-meta">Open to relocation</span></div>
+  </div>
+  <div class="qr-title">// scan to connect</div>
+  <div class="qr-row">
+    <a class="qr-tile" href="Omkar_Pallerla_Resume.pdf" target="_blank" rel="noopener"><img src="assets/qr-resume.png" alt="QR code linking to Omkar Pallerla's resume" /><b>Resume</b></a>
+    <a class="qr-tile" href="https://www.linkedin.com/in/omkar-pallerla" target="_blank" rel="noopener"><img src="assets/qr-linkedin.png" alt="QR code linking to Omkar Pallerla's LinkedIn" /><b>LinkedIn</b></a>
   </div>
 </section>
 
 <footer>
-  <div>© 2026 Omkar Pallerla · BI Developer &amp; Data Analyst</div>
-  <div>MS Business Analytics · ASU · Azure | Databricks | GCP</div>
+  <div>© 2026 Omkar Pallerla · Business Intelligence Analyst | Data Analytics</div>
+  <div>MS Business Analytics · ASU · Google Cloud | Azure | Databricks | Snowflake</div>
 </footer>
 
 <div class="modal-overlay" id="modalOverlay"></div>
 <div class="tldr" id="tldr">
   <button class="tldr-close" id="tldrClose" aria-label="close">×</button>
   <div class="tag">// 30-Second Overview</div>
-  <h2>Omkar Pallerla — <em>BI Developer &amp; Data Analyst</em></h2>
+  <h2>Omkar Pallerla — <em>Business Intelligence Analyst</em></h2>
   <div class="sub">Phoenix, AZ · Open to relocation · <span style="color: var(--accent-3);">● Available</span> · F-1 OPT Active</div>
   <div class="tldr-grid">
     <div class="cell"><b>4+</b><span>Years Exp</span></div>
-    <div class="cell"><b>30+</b><span>Dashboards</span></div>
+    <div class="cell"><b>20+</b><span>Reports Standardized</span></div>
     <div class="cell"><b>4.0</b><span>ASU GPA</span></div>
-    <div class="cell"><b>3×</b><span>Cloud Certs</span></div>
+    <div class="cell"><b>4×</b><span>Certifications</span></div>
   </div>
   <div class="tldr-body">
     <div>
       <h4>What I Do</h4>
-      <p><strong>BI-first</strong> analyst who can go upstream. Power BI, Tableau, Looker, MicroStrategy on the front. SQL, Snowflake, BigQuery, Databricks, Azure, GCP under the hood.</p>
-      <p>Led a 4-person BI team at <strong>Onix</strong>, shipped C-suite dashboards at 99% data accuracy, ran a Tableau → MicroStrategy migration 3 weeks ahead of schedule.</p>
+      <p><strong>BI-first</strong> analyst who can go upstream. Power BI, Tableau and Looker on the front; SQL, Python, BigQuery, Snowflake and Azure under the hood.</p>
+      <p>At <strong>Onix</strong> I led the migration of legacy Excel/on-prem reporting to Google Cloud analytics (−50% manual effort). Now at <strong>ASU</strong> I run finance forecasting, variance analysis and KPI dashboards.</p>
     </div>
     <div>
       <h4>Looking For</h4>
@@ -430,11 +412,12 @@
   </div>
   <div class="tldr-body">
     <div><h4>Education</h4><p><strong>MS Business Analytics</strong> — ASU W.P. Carey · 4.0 GPA · Dec 2025</p></div>
-    <div><h4>Certifications</h4><p>Azure Data Engineer · Databricks DE Associate · GCP Associate Cloud Engineer</p></div>
+    <div><h4>Certifications</h4><p>GCP Associate Cloud Engineer · Azure AI Apps &amp; Agents Developer · Snowflake GenAI · Databricks DE Associate</p></div>
   </div>
   <div class="tldr-cta">
     <a href="https://www.linkedin.com/in/omkar-pallerla" target="_blank" rel="noopener" class="primary">LinkedIn ↗</a>
     <a id="emailTldrLink" href="#">—</a>
+    <a href="Omkar_Pallerla_Resume.pdf" target="_blank" rel="noopener">Resume ↓</a>
     <a href="https://github.com/omkarpallerla" target="_blank" rel="noopener">GitHub ↗</a>
   </div>
   <div class="tldr-explore">Want details? <button id="tldrExplore">Scroll through the portfolio ↓</button></div>
@@ -460,15 +443,18 @@ import * as THREE from 'three';
 })();
 
 const PROJECTS = [
-  { id: 1, title: 'Grip Lab AI — Wearable Recovery Algorithm', cats: ['ml','bi'], desc: 'XGBoost & Random Forest models detecting neuromuscular fatigue missed by standard wearables. Proprietary Asymmetry Indices quantify CNS readiness. Contributing to Utility Patent filing.', metrics: [['86.67%','Accuracy'],['66.67%','Days Corrected'],['Patent','Pending']], tags: ['XGBoost','Python','Power BI','Tableau'], link: 'https://github.com/omkarpallerla/Grip-Lab-Wearable-AI' },
-  { id: 2, title: 'Lean Six Sigma Process Analytics', cats: ['de','bi'], desc: 'DMAIC project cutting Gentech\'s proposal cycle time from 31.6 → 26.9 days. Live Databricks pipeline auto-alerts ops managers on SLA breaches via Tableau dashboard.', metrics: [['-15%','Cycle Time'],['-83%','Rework Rate'],['26.9d','New Cycle']], tags: ['Databricks','Tableau','DMAIC','Python'], link: 'https://github.com/omkarpallerla/Lean-Six-Sigma-Process-Analytics' },
+  { id: 1, title: 'Grip Lab AI — Wearable Recovery Algorithm', cats: ['ml','bi'], desc: 'XGBoost & Random Forest models detecting neuromuscular fatigue missed by standard wearables. Neural-asymmetry indices from grip force quantify CNS readiness. Repo code runs on a simulated athlete cohort.', metrics: [['86%','Hidden Fatigue Caught'],['89%','RPE Alignment'],['XGBoost','Adjustment Model']], tags: ['XGBoost','Python','Power BI','Tableau', 'Simulated data'], link: 'https://github.com/omkarpallerla/Grip-Lab-Wearable-AI' },
+  { id: 2, title: 'Lean Six Sigma Process Analytics', cats: ['de','bi'], desc: 'DMAIC project cutting Gentech\'s proposal cycle time from 31.6 → 26.9 days. Live Databricks pipeline auto-alerts ops managers on SLA breaches via Tableau dashboard.', metrics: [['-15%','Cycle Time'],['-83%','Rework Rate'],['26.9d','New Cycle']], tags: ['Databricks','Tableau','DMAIC','Python', 'Simulated data'], link: 'https://github.com/omkarpallerla/Lean-Six-Sigma-Process-Analytics' },
   { id: 3, title: 'Diabetes Prediction · 10-Algo Benchmark', cats: ['ml','bi'], desc: 'XGBoost (0.84 AUC) benchmarked against 10+ ML models on Pima dataset. Scoring pipeline on Snowflake staging + Python → Power BI patient risk dashboard.', metrics: [['0.84','AUC-ROC'],['10+','Models'],['PIMA','Dataset']], tags: ['XGBoost','Snowflake','Power BI','Python'], link: 'https://github.com/omkarpallerla/Diabetes-Prediction-Ensemble-Modeling' },
-  { id: 4, title: 'Yelp Fake Review Detection — NLP', cats: ['ml','de'], desc: 'VADER sentiment + XGBoost fraud detection engine achieving 99% F1. Flags fake reviews using asymmetry indices, caps ratio, and TF-IDF features via Databricks pipeline.', metrics: [['99%','F1 Score'],['2K+','Reviews'],['NLP','Pipeline']], tags: ['NLP','XGBoost','Databricks','Python'], link: 'https://github.com/omkarpallerla/Yelp-Fake-Review-Detection-NLP' },
-  { id: 5, title: 'Strategic Investment Risk Analysis', cats: ['bi','ml'], desc: '10,000-iteration Monte Carlo simulation for EV capacity planning. Bayesian Decision Trees determine optimal capital allocation. CFO adjusts assumptions live in Power BI.', metrics: [['$883M','Expected NPV'],['10K','Simulations'],['Live','CFO Dash']], tags: ['Python','Power BI','Monte Carlo','SciPy'], link: 'https://github.com/omkarpallerla/Strategic-Risk-Analysis-Monte-Carlo' },
-  { id: 6, title: 'E-Scoot Network Optimization', cats: ['bi','de'], desc: 'MILP facility location model solving depot placement for e-scooter fleet. Saved 19% of infrastructure budget while meeting 100% demand coverage. Visualized on Power BI Azure Maps.', metrics: [['19%','Budget Saved'],['100%','Coverage'],['MILP','Optimized']], tags: ['MILP','Python','Power BI','Azure Maps'], link: 'https://github.com/omkarpallerla/E-Scoot-Network-Optimization' },
+  { id: 4, title: 'Yelp Fake Review Detection — NLP', cats: ['ml','de'], desc: 'VADER sentiment + XGBoost fraud detection engine achieving 99% F1. Flags fake reviews using asymmetry indices, caps ratio, and TF-IDF features via Databricks pipeline.', metrics: [['99%','F1 Score'],['2K+','Reviews'],['NLP','Pipeline']], tags: ['NLP','XGBoost','Databricks','Python', 'Simulated data'], link: 'https://github.com/omkarpallerla/Yelp-Fake-Review-Detection-NLP' },
+  { id: 5, title: 'Strategic Investment Risk Analysis', cats: ['bi','ml'], desc: '10,000-iteration Monte Carlo simulation for EV capacity planning. Bayesian Decision Trees determine optimal capital allocation. CFO adjusts assumptions live in Power BI.', metrics: [['$883M','Expected NPV'],['10K','Simulations'],['Live','CFO Dash']], tags: ['Python','Power BI','Monte Carlo','SciPy', 'Simulated data'], link: 'https://github.com/omkarpallerla/Strategic-Risk-Analysis-Monte-Carlo' },
+  { id: 6, title: 'E-Scoot Network Optimization', cats: ['bi','de'], desc: 'MILP facility location model solving depot placement for e-scooter fleet. Saved 19% of infrastructure budget while meeting 100% demand coverage. Visualized on Power BI Azure Maps.', metrics: [['19%','Budget Saved'],['100%','Coverage'],['MILP','Optimized']], tags: ['MILP','Python','Power BI','Azure Maps', 'Simulated data'], link: 'https://github.com/omkarpallerla/E-Scoot-Network-Optimization' },
   { id: 7, title: 'Obesity Risk Classification', cats: ['ml','bi'], desc: '94.2% accuracy Random Forest with SHAP explainability. Risk scores exported to Power BI care coordinator dashboard — Low/Medium/High tiers drive daily patient triage.', metrics: [['94.2%','Accuracy'],['0.97','AUC'],['SHAP','Explained']], tags: ['Random Forest','SHAP','Power BI','Scikit-Learn'], link: 'https://github.com/omkarpallerla/Obesity-Risk-Classification' },
   { id: 8, title: 'Used Car Price Prediction', cats: ['ml','bi'], desc: 'Polynomial Regression (R²=0.93) with VIF diagnostics predicting resale value. Predicted prices feed Power BI inventory dashboard flagging over/underpriced vehicles.', metrics: [['0.93','R² Score'],['18%','Diesel Premium'],['Live','Pricing']], tags: ['Regression','Power BI','Python','Statsmodels'], link: 'https://github.com/omkarpallerla/Used-Car-Price-Prediction' },
-  { id: 9, title: 'Spotify Songs Popularity Analysis', cats: ['bi'], desc: 'Analyzed 50,000+ tracks to uncover the audio feature fingerprint of hit songs. Danceability + Energy > 0.7 is the formula. Power BI streaming analytics dashboard.', metrics: [['50K+','Tracks'],['0.48','Top Corr.'],['Audio','Features']], tags: ['Python','Power BI','Pandas','Plotly'], link: 'https://github.com/omkarpallerla/Spotify-Songs-Popularity' }
+  { id: 9, title: 'Spotify Songs Popularity Analysis', cats: ['bi'], desc: 'Analyzed 50,000+ tracks to uncover the audio feature fingerprint of hit songs. Danceability + Energy > 0.7 is the formula. Power BI streaming analytics dashboard.', metrics: [['50K+','Tracks'],['0.48','Top Corr.'],['Audio','Features']], tags: ['Python','Power BI','Pandas','Plotly', 'Simulated data'], link: 'https://github.com/omkarpallerla/Spotify-Songs-Popularity' },
+  { id: 10, title: 'Real-Time Financial Analytics Platform', cats: ['de','bi'], desc: 'Fintech BI pipeline built 100% inside Snowflake: Snowpipe + Tasks ingestion, Snowpark Bronze→Silver→Gold medallion, Cortex AI (forecasting, anomaly detection, explainable fraud, RAG, Text2SQL, agent) and a Streamlit dashboard.', metrics: [['3-layer','Medallion'],['17','SQL Worksheets'],['Cortex','AI Stack']], tags: ['Snowflake','Snowpark','Cortex AI','Streamlit'], link: 'https://github.com/omkarpallerla/realtime-financial-analytics' },
+  { id: 11, title: 'Product Design Optimization — 2⁴ DOE', cats: ['bi','ml'], desc: '2⁴ full-factorial experiment (48 runs) with ANOVA to find the optimal prototype configuration; a Length × Width interaction drives the gain and small tyres match big-tyre performance at lower cost.', metrics: [['151 cm','Best Config'],['48','Runs'],['2⁴','Factorial']], tags: ['Python','ANOVA','Statsmodels','Power BI','Simulated data'], link: 'https://github.com/omkarpallerla/Product-Design-Optimization-DOE' },
+  { id: 12, title: 'Solar Panel Fault Detection — CV Pipeline', cats: ['ml','de'], desc: 'Design for a VGG16 transfer-learning classifier of solar panel faults from drone imagery, with an Azure Data Factory ingestion template and Power BI hand-off. The repo evaluates a simulated run; no trained weights or images are included.', metrics: [['5','Fault Classes'],['VGG16','Architecture'],['ADF','Ingestion']], tags: ['TensorFlow','Azure ML','ADF','Simulated data'], link: 'https://github.com/omkarpallerla/Solar-Panel-Fault-Detection-CV' }
 ];
 const CAT_LABEL = { bi: 'BI & Analytics', ml: 'Machine Learning', de: 'Data Engineering' };
 
@@ -586,6 +572,7 @@ modalOverlay.addEventListener('click', closeTldr);
 tldrExplore.addEventListener('click', () => { closeTldr(); document.getElementById('about').scrollIntoView({ behavior: 'smooth' }); });
 window.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeTldr(); });
 setTimeout(openTldr, 700);
+
 </script>
 </body>
 </html>
